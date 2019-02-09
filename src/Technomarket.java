@@ -32,6 +32,7 @@ import brands.WashingMachineBrand;
 import products.Category;
 import products.Kind;
 import products.Product;
+import users.User;
 
 public class Technomarket {
 	private Map<Category, Map<Kind,Map<Product,Integer>>> products;
