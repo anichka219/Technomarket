@@ -36,12 +36,12 @@ import users.User;
 
 public class Technomarket {
 	private Map<Category, Map<Kind,Map<Product,Integer>>> products;
-	private Set<User> users;
+	private Map<String,User> users;
 	private static Technomarket technomarket=null;
 	
 	private Technomarket() {
 		this.products=new HashMap();
-		this.users=new HashSet<User>();
+		this.users=new HashMap<String,User>();
 	}
 	
 	public static Technomarket getInstance() {
@@ -187,25 +187,22 @@ public class Technomarket {
 		return new Product.Camera(model, price,Product.getRandomColor(),brand);
 	}
 	
-	public void login(String email,String password) {
-		Set<String> emails=this.users.stream().map(u->u.getEmail()).collect(Collectors.toSet());
-		Set<String> passwords=this.users.stream().map(u->u.getPassword()).collect(Collectors.toSet());
+	public boolean login(String email,String password) {	
 		
-		if(emails.contains(email) && passwords.contains(password)) {
-			User user=this.users.stream()
-			.filter(u->u.getEmail().equals(email) 
-					&& u.getPassword().equals(password))
-			.findFirst()
-			.get();
-			user.setLogged(true);
-			System.out.println("Successful login!");
-			return;
-		}
-		System.out.println("Invalid email or password!");
+		if(!this.users.containsKey(email)) 
+			return false;
+		
+		User user=this.users.get(email);
+		
+		if(!user.getPassword().equals(password)) 
+			return false;
+			
+		user.setLogged(true);
+		return true;
 	}
 	
 	public void register(User user) {
-		this.users.add(user);
+		
 		System.out.println("Successful register!");		
 	}
 	
