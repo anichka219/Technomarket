@@ -1,6 +1,8 @@
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 import brands.TelevisionBrand;
@@ -131,7 +133,105 @@ public class Demo {
 				}
 				break;
 			case 2:
+				boolean flag2 = true;
+				while (flag2) {
+					
+					Category category = null;
+					Kind kind = null;
+					List<Product> currentList = new LinkedList<Product>();
+					System.out.println("Natisnete 1 za razglejdane na TV & Audio");
+					System.out.println("Natisnete 2 za razglejdane na Kompiutri & Periferiq");
+					System.out.println("Natisnete 3 za razglejdane na Telefoni & Tableti");
+					System.out.println("Natisnete 4 za razglejdane na Elektrouredi");
+					System.out.println("Natisnete 5 za razglejdane na Kameri & Fotoaparati");
+					System.out.println("Natisnete 6 za da se vurnete v predishnoto menu");
+					System.out.println("Natisnete 0 za izhod ot saita");
+					int input2 = sc.nextInt();
+					
+					switch (input2) {
+					case 1:
+						boolean flag3 = true;
+						while (flag3) {
+						category = Category.TV_AUDIO;
+						System.out.println("Natisnete 1 za razglejdane na Televizori");
+						System.out.println("Natisnete 2 za razglejdane na Domashno kino");
+						System.out.println("Natisnete 3 za razglejdane na Audio sistemi");
+						System.out.println("Natisnete 4 za da se vurnete v predishnoto menu");
+						System.out.println("Natisnete 0 za izhod ot saita");
+						int input3 = sc.nextInt();
+						
+						switch (input3) {
+						
+						case 1:
+							boolean flag4 = true;
+							while (flag4) {
+							kind = Kind.TELEVISION;
+							currentList = t.getProductList(category, kind);
+							currentList.forEach(product -> System.out.println(product));
+							System.out.println("Natisnete 1 za razglejdane na Televizori");
+							System.out.println("Natisnete 2 za razglejdane na Domashno kino");
+							System.out.println("Natisnete 3 za razglejdane na Audio sistemi");
+							System.out.println("Natisnete 4 za da se vurnete v predishnoto menu");
+							System.out.println("Natisnete 0 za izhod ot saita");
+							int input4 = sc.nextInt();
+							
+							
+							
+							
+							
+							
+							}
+							break;
+						case 2:
+							kind = Kind.HOMECINEMA;
+							break;
+						case 3:
+							kind = Kind.AUDIOSYSTEM;
+							break;
+						case 4:
+							category = null;
+							flag3 = false;
+							break;
+						case 0:
+							return;					
+						default:
+							System.out.println("Bad input!");
+							break;
+						}
 				
+						}
+					break;
+					case 2:
+						category = Category.CP_PERIPHERALS;
+						
+						
+					break;
+					case 3:
+						category = Category.PHONES_TABLETS;
+						
+						
+					break;
+					case 4:
+						category = Category.ELECTRICAL_APPLIANCE;
+						
+						
+					break;
+					case 5:
+						category = Category.PHOTO_VIDEO;
+						
+						
+					break;
+					case 6:
+						flag2 = false;
+						break;
+					case 0:
+						return;					
+					default:
+						System.out.println("Bad input!");
+						break;
+					}
+				
+				}
 			break;
 			case 0:
 				return;

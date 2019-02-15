@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
@@ -204,6 +205,12 @@ public class Technomarket {
 	public void register(User user) {
 		
 		System.out.println("Successful register!");		
+	}
+	
+	public LinkedList<Product> getProductList(Category category,Kind kind) {
+		LinkedList<Product> list = new LinkedList<Product>();
+		this.products.get(category).get(kind).keySet().forEach(product -> list.add(product));
+		return list;
 	}
 	
 	boolean checkUser(String email) {
