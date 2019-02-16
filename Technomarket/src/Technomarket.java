@@ -239,4 +239,30 @@ public class Technomarket {
 		}
 		return this.users.get(email);
 	}
+
+	public boolean containsProductID(Category category, Kind kind, int input7) {
+		HashSet<Product> tempSet = new HashSet<Product>();
+		tempSet = (HashSet<Product>) this.products.get(category).get(kind).keySet();
+		boolean contains = false;
+		for (Product p : tempSet) {
+			if (p.getProductID() == input7) {
+				contains = true;
+				break;
+			}
+		}
+		return contains;
+	}
+
+	public Product getProduct(Category category, Kind kind, int input7) {
+		HashSet<Product> tempSet = new HashSet<Product>();
+		tempSet = (HashSet<Product>) this.products.get(category).get(kind).keySet();
+		Product product = null;
+		for (Product p : tempSet) {
+			if (p.getProductID() == input7) {
+				product = p;
+				break;
+			}
+		}
+		return product;
+	}
 }

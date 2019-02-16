@@ -6,6 +6,8 @@ import brands.*;
 
 public abstract class Product {
 
+	private static int lastProductID = 1;
+	
 	private String model;
 	private double price;
 	private String desciption;
@@ -13,12 +15,14 @@ public abstract class Product {
 	private Category category;
 	private Kind kind;
 	private IBrand brand;
+	private int productID;
 
 	public Product(String model, double price,Color color,IBrand brand) {
 		this.model = model;
 		this.price = price;
 		this.color=color;
 		this.brand = brand;
+		this.productID = Product.lastProductID++;
 	}
 	
 	
@@ -210,5 +214,13 @@ public abstract class Product {
 
 	public void setColor(Color color) {
 		this.color = color;
+	}
+
+	public int getProductID() {
+		return productID;
+	}
+
+	public void setProductID(int productID) {
+		this.productID = productID;
 	}
 }

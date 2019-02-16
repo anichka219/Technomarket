@@ -1,9 +1,12 @@
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import brands.TelevisionBrand;
 import products.Category;
@@ -26,7 +29,7 @@ public class Demo {
 		System.out.println(p.getBrand());
 		
 		Scanner sc = new Scanner(System.in);
-		HashMap<Product, Integer> shopingCart = new HashMap<Product, Integer>();
+		ArrayList<Product> shopingCart = new ArrayList();
 		boolean hasLoggedIn = false;
 		User user = null;
 		System.out.println("Dobre doshli v saita na Technomarket!");
@@ -152,53 +155,124 @@ public class Demo {
 					case 1:
 						boolean flag3 = true;
 						while (flag3) {
-						category = Category.TV_AUDIO;
-						System.out.println("Natisnete 1 za razglejdane na Televizori");
-						System.out.println("Natisnete 2 za razglejdane na Domashno kino");
-						System.out.println("Natisnete 3 za razglejdane na Audio sistemi");
-						System.out.println("Natisnete 4 za da se vurnete v predishnoto menu");
-						System.out.println("Natisnete 0 za izhod ot saita");
-						int input3 = sc.nextInt();
-						
-						switch (input3) {
-						
-						case 1:
-							boolean flag4 = true;
-							while (flag4) {
-							kind = Kind.TELEVISION;
-							currentList = t.getProductList(category, kind);
-							currentList.forEach(product -> System.out.println(product));
+							category = Category.TV_AUDIO;
 							System.out.println("Natisnete 1 za razglejdane na Televizori");
 							System.out.println("Natisnete 2 za razglejdane na Domashno kino");
 							System.out.println("Natisnete 3 za razglejdane na Audio sistemi");
 							System.out.println("Natisnete 4 za da se vurnete v predishnoto menu");
 							System.out.println("Natisnete 0 za izhod ot saita");
-							int input4 = sc.nextInt();
+							int input3 = sc.nextInt();
 							
+							switch (input3) {
 							
-							
-							
-							
-							
+							case 1:
+								boolean flag4 = true;
+								while (flag4) {
+									kind = Kind.TELEVISION;
+									currentList = t.getProductList(category, kind);
+									currentList.forEach(product -> System.out.println(product));
+									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
+									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
+									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 6 za da se vurnete v predishnoto menu");
+									System.out.println("Natisnete 7 za da dobavqne na ured v kolichkata");
+									System.out.println("Natisnete 8 za pregled na kolichkata vi");
+									System.out.println("Natisnete 9 za kupuvane na uredite v kolichkata vi");
+									System.out.println("Natisnete 0 za izhod ot saita");
+									int input4 = sc.nextInt();
+									
+									switch (input4) {
+									
+									case 1:
+										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 2:
+										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 3:
+										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 4:
+										System.out.println("Molq vuvedete maximalna cena:");
+										int input5 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() < input5).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() < input5)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 5:
+										System.out.println("Molq vuvedete minimalna cena:");
+										int input6 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() > input6).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() > input6)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 6:
+										flag4 = false;
+										break;
+									case 7:
+										System.out.println("Molq vuvedete ID na ureda:");
+										int input7 = sc.nextInt();
+										if(!t.containsProductID(category, kind, input7)) {
+											System.out.println("Greshno ID!");
+										}
+										else {
+											shopingCart.add(t.getProduct(category, kind, input7));
+										}
+										break;
+									case 8:
+										if(shopingCart.isEmpty()) {
+											System.out.println("Kolichkata vi e prazna!");
+										}
+										else {
+											shopingCart.forEach(product -> System.out.println(p));
+										}
+										break;
+									case 9:
+										
+										
+										
+										
+										
+									case 0:
+										return;					
+									default:
+										System.out.println("Bad input!");
+										break;
+									}
+								}
+								break;
+							case 2:
+								kind = Kind.HOMECINEMA;
+								break;
+							case 3:
+								kind = Kind.AUDIOSYSTEM;
+								break;
+							case 4:
+								category = null;
+								flag3 = false;
+								break;
+							case 0:
+								return;					
+							default:
+								System.out.println("Bad input!");
+								break;
 							}
-							break;
-						case 2:
-							kind = Kind.HOMECINEMA;
-							break;
-						case 3:
-							kind = Kind.AUDIOSYSTEM;
-							break;
-						case 4:
-							category = null;
-							flag3 = false;
-							break;
-						case 0:
-							return;					
-						default:
-							System.out.println("Bad input!");
-							break;
-						}
-				
+					
 						}
 					break;
 					case 2:
