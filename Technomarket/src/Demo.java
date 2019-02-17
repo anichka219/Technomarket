@@ -569,24 +569,1671 @@ public class Demo {
 						}
 					break;
 					case 2:
-						category = Category.CP_PERIPHERALS;
-						
-						
+						boolean flag7 = true;
+						while (flag7) {
+							category = Category.CP_PERIPHERALS;
+							System.out.println("Natisnete 1 za razglejdane na Laptopi");
+							System.out.println("Natisnete 2 za razglejdane na Kompiutri");
+							System.out.println("Natisnete 3 za razglejdane na Monitori");
+							System.out.println("Natisnete 4 za da se vurnete v predishnoto menu");
+							System.out.println("Natisnete 0 za izhod ot saita");
+							int input19 = sc.nextInt();
+							
+							switch (input19) {
+							
+							case 1:
+								boolean flag8 = true;
+								while (flag8) {
+									kind = Kind.LAPTOP;
+									currentList = t.getProductList(category, kind);
+									currentList.forEach(product -> System.out.println(product));
+									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
+									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
+									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 6 za da se vurnete v predishnoto menu");
+									System.out.println("Natisnete 7 za da dobavqne na ured v kolichkata");
+									System.out.println("Natisnete 8 za pregled na kolichkata vi");
+									System.out.println("Natisnete 9 za kupuvane na uredite v kolichkata vi");
+									System.out.println("Natisnete 0 za izhod ot saita");
+									int input20 = sc.nextInt();
+									
+									switch (input20) {
+									
+									case 1:
+										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 2:
+										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 3:
+										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 4:
+										System.out.println("Molq vuvedete maximalna cena:");
+										int input21 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() < input21).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() < input21)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 5:
+										System.out.println("Molq vuvedete minimalna cena:");
+										int input22 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() > input22).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() > input22)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 6:
+										kind = null;
+										flag8 = false;
+										break;
+									case 7:
+										System.out.println("Molq vuvedete ID na ureda:");
+										int input23 = sc.nextInt();
+										if(!t.containsProductID(category, kind, input23)) {
+											System.out.println("Greshno ID!");
+										}
+										else {
+											if (!t.hasProductInStock(category, kind, input23)) {
+												System.out.println("Ureda ne e nalichen v momenta!");
+												if (hasLoggedIn) {
+													System.out.println("Shte poluchite suobshtenie kogato zaredime broiki!");
+													Request request = new Request(user, t.getProduct(category, kind, input23));
+													try {
+														t.addRequest(request);
+													} catch (InterruptedException e) {
+														// TODO Auto-generated catch block
+														e.printStackTrace();
+													}
+												}
+											}
+											else {
+												shopingCart.add(t.getProduct(category, kind, input23));
+											}
+										}
+										break;
+									case 8:
+										if(shopingCart.isEmpty()) {
+											System.out.println("Kolichkata vi e prazna!");
+										}
+										else {
+											shopingCart.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 9:
+										if (!hasLoggedIn) {
+											System.out.println("Ne ste vleznali v profila si!");
+										}
+										else {
+											System.out.println("Vuvedete nomer na kreditna karta:");
+											String input24 = sc.next();
+											CreditCard card = new CreditCard(input24);
+											int sum = 0;
+											for (Product p1 : shopingCart) {
+												sum += p1.getPrice();
+											}
+											if (sum > card.getMoney()) {
+												System.out.println("Nqmate dostatuchno pari v smetkata si!");
+											}
+											else {
+												card.setMoney(card.getMoney() - sum);
+												System.out.println("Chestito kupihte uredite! Shte poluchite suobshtenie v denq na dostavka!");
+												Delivery delivery = new Delivery (user, shopingCart);
+												try {
+													t.addDelivery(delivery);
+												} catch (InterruptedException e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
+												sum = 0;
+												shopingCart.clear();
+											}
+										}
+									case 0:
+										return;					
+									default:
+										System.out.println("Bad input!");
+										break;
+									}
+								}
+								break;
+							case 2:
+								boolean flag9 = true;
+								while (flag9) {
+									kind = Kind.COMPUTER;
+									currentList = t.getProductList(category, kind);
+									currentList.forEach(product -> System.out.println(product));
+									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
+									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
+									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 6 za da se vurnete v predishnoto menu");
+									System.out.println("Natisnete 7 za da dobavqne na ured v kolichkata");
+									System.out.println("Natisnete 8 za pregled na kolichkata vi");
+									System.out.println("Natisnete 9 za kupuvane na uredite v kolichkata vi");
+									System.out.println("Natisnete 0 za izhod ot saita");
+									int input25 = sc.nextInt();
+									
+									switch (input25) {
+									
+									case 1:
+										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 2:
+										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 3:
+										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 4:
+										System.out.println("Molq vuvedete maximalna cena:");
+										int input26 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() < input26).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() < input26)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 5:
+										System.out.println("Molq vuvedete minimalna cena:");
+										int input27 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() > input27).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() > input27)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 6:
+										kind = null;
+										flag9 = false;
+										break;
+									case 7:
+										System.out.println("Molq vuvedete ID na ureda:");
+										int input28 = sc.nextInt();
+										if(!t.containsProductID(category, kind, input28)) {
+											System.out.println("Greshno ID!");
+										}
+										else {
+											if (!t.hasProductInStock(category, kind, input28)) {
+												System.out.println("Ureda ne e nalichen v momenta!");
+												if (hasLoggedIn) {
+													System.out.println("Shte poluchite suobshtenie kogato zaredime broiki!");
+													Request request = new Request(user, t.getProduct(category, kind, input28));
+													try {
+														t.addRequest(request);
+													} catch (InterruptedException e) {
+														// TODO Auto-generated catch block
+														e.printStackTrace();
+													}
+												}
+											}
+											else {
+												shopingCart.add(t.getProduct(category, kind, input28));
+											}
+										}
+										break;
+									case 8:
+										if(shopingCart.isEmpty()) {
+											System.out.println("Kolichkata vi e prazna!");
+										}
+										else {
+											shopingCart.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 9:
+										if (!hasLoggedIn) {
+											System.out.println("Ne ste vleznali v profila si!");
+										}
+										else {
+											System.out.println("Vuvedete nomer na kreditna karta:");
+											String input29 = sc.next();
+											CreditCard card = new CreditCard(input29);
+											int sum = 0;
+											for (Product p1 : shopingCart) {
+												sum += p1.getPrice();
+											}
+											if (sum > card.getMoney()) {
+												System.out.println("Nqmate dostatuchno pari v smetkata si!");
+											}
+											else {
+												card.setMoney(card.getMoney() - sum);
+												System.out.println("Chestito kupihte uredite! Shte poluchite suobshtenie v denq na dostavka!");
+												Delivery delivery = new Delivery (user, shopingCart);
+												try {
+													t.addDelivery(delivery);
+												} catch (InterruptedException e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
+												sum = 0;
+												shopingCart.clear();
+											}
+										}
+									case 0:
+										return;					
+									default:
+										System.out.println("Bad input!");
+										break;
+									}
+								}
+								break;
+							case 3:
+								boolean flag10 = true;
+								while (flag10) {
+									kind = Kind.MONITOR;
+									currentList = t.getProductList(category, kind);
+									currentList.forEach(product -> System.out.println(product));
+									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
+									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
+									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 6 za da se vurnete v predishnoto menu");
+									System.out.println("Natisnete 7 za da dobavqne na ured v kolichkata");
+									System.out.println("Natisnete 8 za pregled na kolichkata vi");
+									System.out.println("Natisnete 9 za kupuvane na uredite v kolichkata vi");
+									System.out.println("Natisnete 0 za izhod ot saita");
+									int input30 = sc.nextInt();
+									
+									switch (input30) {
+									
+									case 1:
+										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 2:
+										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 3:
+										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 4:
+										System.out.println("Molq vuvedete maximalna cena:");
+										int input31 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() < input31).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() < input31)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 5:
+										System.out.println("Molq vuvedete minimalna cena:");
+										int input32 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() > input32).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() > input32)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 6:
+										kind = null;
+										flag10 = false;
+										break;
+									case 7:
+										System.out.println("Molq vuvedete ID na ureda:");
+										int input33 = sc.nextInt();
+										if(!t.containsProductID(category, kind, input33)) {
+											System.out.println("Greshno ID!");
+										}
+										else {
+											if (!t.hasProductInStock(category, kind, input33)) {
+												System.out.println("Ureda ne e nalichen v momenta!");
+												if (hasLoggedIn) {
+													System.out.println("Shte poluchite suobshtenie kogato zaredime broiki!");
+													Request request = new Request(user, t.getProduct(category, kind, input33));
+													try {
+														t.addRequest(request);
+													} catch (InterruptedException e) {
+														// TODO Auto-generated catch block
+														e.printStackTrace();
+													}
+												}
+											}
+											else {
+												shopingCart.add(t.getProduct(category, kind, input33));
+											}
+										}
+										break;
+									case 8:
+										if(shopingCart.isEmpty()) {
+											System.out.println("Kolichkata vi e prazna!");
+										}
+										else {
+											shopingCart.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 9:
+										if (!hasLoggedIn) {
+											System.out.println("Ne ste vleznali v profila si!");
+										}
+										else {
+											System.out.println("Vuvedete nomer na kreditna karta:");
+											String input34 = sc.next();
+											CreditCard card = new CreditCard(input34);
+											int sum = 0;
+											for (Product p1 : shopingCart) {
+												sum += p1.getPrice();
+											}
+											if (sum > card.getMoney()) {
+												System.out.println("Nqmate dostatuchno pari v smetkata si!");
+											}
+											else {
+												card.setMoney(card.getMoney() - sum);
+												System.out.println("Chestito kupihte uredite! Shte poluchite suobshtenie v denq na dostavka!");
+												Delivery delivery = new Delivery (user, shopingCart);
+												try {
+													t.addDelivery(delivery);
+												} catch (InterruptedException e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
+												sum = 0;
+												shopingCart.clear();
+											}
+										}
+									case 0:
+										return;					
+									default:
+										System.out.println("Bad input!");
+										break;
+									}
+								}								
+								break;
+							case 4:
+								category = null;
+								flag7 = false;
+								break;
+							case 0:
+								return;					
+							default:
+								System.out.println("Bad input!");
+								break;
+							}
+					
+						}
+	
 					break;
 					case 3:
-						category = Category.PHONES_TABLETS;
-						
-						
+						boolean flag11 = true;
+						while (flag11) {
+							category = Category.PHONES_TABLETS;
+							System.out.println("Natisnete 1 za razglejdane na Telefoni");
+							System.out.println("Natisnete 2 za razglejdane na Smart Chasovnici");
+							System.out.println("Natisnete 3 za razglejdane na Tableti");
+							System.out.println("Natisnete 4 za da se vurnete v predishnoto menu");
+							System.out.println("Natisnete 0 za izhod ot saita");
+							int input35 = sc.nextInt();
+							
+							switch (input35) {
+							
+							case 1:
+								boolean flag12 = true;
+								while (flag12) {
+									kind = Kind.PHONE;
+									currentList = t.getProductList(category, kind);
+									currentList.forEach(product -> System.out.println(product));
+									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
+									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
+									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 6 za da se vurnete v predishnoto menu");
+									System.out.println("Natisnete 7 za da dobavqne na ured v kolichkata");
+									System.out.println("Natisnete 8 za pregled na kolichkata vi");
+									System.out.println("Natisnete 9 za kupuvane na uredite v kolichkata vi");
+									System.out.println("Natisnete 0 za izhod ot saita");
+									int input36 = sc.nextInt();
+									
+									switch (input36) {
+									
+									case 1:
+										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 2:
+										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 3:
+										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 4:
+										System.out.println("Molq vuvedete maximalna cena:");
+										int input37 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() < input37).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() < input37)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 5:
+										System.out.println("Molq vuvedete minimalna cena:");
+										int input38 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() > input38).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() > input38)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 6:
+										kind = null;
+										flag12 = false;
+										break;
+									case 7:
+										System.out.println("Molq vuvedete ID na ureda:");
+										int input39 = sc.nextInt();
+										if(!t.containsProductID(category, kind, input39)) {
+											System.out.println("Greshno ID!");
+										}
+										else {
+											if (!t.hasProductInStock(category, kind, input39)) {
+												System.out.println("Ureda ne e nalichen v momenta!");
+												if (hasLoggedIn) {
+													System.out.println("Shte poluchite suobshtenie kogato zaredime broiki!");
+													Request request = new Request(user, t.getProduct(category, kind, input39));
+													try {
+														t.addRequest(request);
+													} catch (InterruptedException e) {
+														// TODO Auto-generated catch block
+														e.printStackTrace();
+													}
+												}
+											}
+											else {
+												shopingCart.add(t.getProduct(category, kind, input39));
+											}
+										}
+										break;
+									case 8:
+										if(shopingCart.isEmpty()) {
+											System.out.println("Kolichkata vi e prazna!");
+										}
+										else {
+											shopingCart.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 9:
+										if (!hasLoggedIn) {
+											System.out.println("Ne ste vleznali v profila si!");
+										}
+										else {
+											System.out.println("Vuvedete nomer na kreditna karta:");
+											String input40 = sc.next();
+											CreditCard card = new CreditCard(input40);
+											int sum = 0;
+											for (Product p1 : shopingCart) {
+												sum += p1.getPrice();
+											}
+											if (sum > card.getMoney()) {
+												System.out.println("Nqmate dostatuchno pari v smetkata si!");
+											}
+											else {
+												card.setMoney(card.getMoney() - sum);
+												System.out.println("Chestito kupihte uredite! Shte poluchite suobshtenie v denq na dostavka!");
+												Delivery delivery = new Delivery (user, shopingCart);
+												try {
+													t.addDelivery(delivery);
+												} catch (InterruptedException e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
+												sum = 0;
+												shopingCart.clear();
+											}
+										}
+									case 0:
+										return;					
+									default:
+										System.out.println("Bad input!");
+										break;
+									}
+								}
+								break;
+							case 2:
+								boolean flag13 = true;
+								while (flag13) {
+									kind = Kind.SMARTWATCH;
+									currentList = t.getProductList(category, kind);
+									currentList.forEach(product -> System.out.println(product));
+									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
+									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
+									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 6 za da se vurnete v predishnoto menu");
+									System.out.println("Natisnete 7 za da dobavqne na ured v kolichkata");
+									System.out.println("Natisnete 8 za pregled na kolichkata vi");
+									System.out.println("Natisnete 9 za kupuvane na uredite v kolichkata vi");
+									System.out.println("Natisnete 0 za izhod ot saita");
+									int input41 = sc.nextInt();
+									
+									switch (input41) {
+									
+									case 1:
+										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 2:
+										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 3:
+										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 4:
+										System.out.println("Molq vuvedete maximalna cena:");
+										int input42 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() < input42).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() < input42)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 5:
+										System.out.println("Molq vuvedete minimalna cena:");
+										int input43 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() > input43).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() > input43)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 6:
+										kind = null;
+										flag13 = false;
+										break;
+									case 7:
+										System.out.println("Molq vuvedete ID na ureda:");
+										int input44 = sc.nextInt();
+										if(!t.containsProductID(category, kind, input44)) {
+											System.out.println("Greshno ID!");
+										}
+										else {
+											if (!t.hasProductInStock(category, kind, input44)) {
+												System.out.println("Ureda ne e nalichen v momenta!");
+												if (hasLoggedIn) {
+													System.out.println("Shte poluchite suobshtenie kogato zaredime broiki!");
+													Request request = new Request(user, t.getProduct(category, kind, input44));
+													try {
+														t.addRequest(request);
+													} catch (InterruptedException e) {
+														// TODO Auto-generated catch block
+														e.printStackTrace();
+													}
+												}
+											}
+											else {
+												shopingCart.add(t.getProduct(category, kind, input44));
+											}
+										}
+										break;
+									case 8:
+										if(shopingCart.isEmpty()) {
+											System.out.println("Kolichkata vi e prazna!");
+										}
+										else {
+											shopingCart.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 9:
+										if (!hasLoggedIn) {
+											System.out.println("Ne ste vleznali v profila si!");
+										}
+										else {
+											System.out.println("Vuvedete nomer na kreditna karta:");
+											String input45 = sc.next();
+											CreditCard card = new CreditCard(input45);
+											int sum = 0;
+											for (Product p1 : shopingCart) {
+												sum += p1.getPrice();
+											}
+											if (sum > card.getMoney()) {
+												System.out.println("Nqmate dostatuchno pari v smetkata si!");
+											}
+											else {
+												card.setMoney(card.getMoney() - sum);
+												System.out.println("Chestito kupihte uredite! Shte poluchite suobshtenie v denq na dostavka!");
+												Delivery delivery = new Delivery (user, shopingCart);
+												try {
+													t.addDelivery(delivery);
+												} catch (InterruptedException e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
+												sum = 0;
+												shopingCart.clear();
+											}
+										}
+									case 0:
+										return;					
+									default:
+										System.out.println("Bad input!");
+										break;
+									}
+								}
+								break;
+							case 3:
+								boolean flag14 = true;
+								while (flag14) {
+									kind = Kind.TABLET;
+									currentList = t.getProductList(category, kind);
+									currentList.forEach(product -> System.out.println(product));
+									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
+									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
+									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 6 za da se vurnete v predishnoto menu");
+									System.out.println("Natisnete 7 za da dobavqne na ured v kolichkata");
+									System.out.println("Natisnete 8 za pregled na kolichkata vi");
+									System.out.println("Natisnete 9 za kupuvane na uredite v kolichkata vi");
+									System.out.println("Natisnete 0 za izhod ot saita");
+									int input46 = sc.nextInt();
+									
+									switch (input46) {
+									
+									case 1:
+										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 2:
+										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 3:
+										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 4:
+										System.out.println("Molq vuvedete maximalna cena:");
+										int input47 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() < input47).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() < input47)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 5:
+										System.out.println("Molq vuvedete minimalna cena:");
+										int input48 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() > input48).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() > input48)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 6:
+										kind = null;
+										flag14 = false;
+										break;
+									case 7:
+										System.out.println("Molq vuvedete ID na ureda:");
+										int input49 = sc.nextInt();
+										if(!t.containsProductID(category, kind, input49)) {
+											System.out.println("Greshno ID!");
+										}
+										else {
+											if (!t.hasProductInStock(category, kind, input49)) {
+												System.out.println("Ureda ne e nalichen v momenta!");
+												if (hasLoggedIn) {
+													System.out.println("Shte poluchite suobshtenie kogato zaredime broiki!");
+													Request request = new Request(user, t.getProduct(category, kind, input49));
+													try {
+														t.addRequest(request);
+													} catch (InterruptedException e) {
+														// TODO Auto-generated catch block
+														e.printStackTrace();
+													}
+												}
+											}
+											else {
+												shopingCart.add(t.getProduct(category, kind, input49));
+											}
+										}
+										break;
+									case 8:
+										if(shopingCart.isEmpty()) {
+											System.out.println("Kolichkata vi e prazna!");
+										}
+										else {
+											shopingCart.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 9:
+										if (!hasLoggedIn) {
+											System.out.println("Ne ste vleznali v profila si!");
+										}
+										else {
+											System.out.println("Vuvedete nomer na kreditna karta:");
+											String input50 = sc.next();
+											CreditCard card = new CreditCard(input50);
+											int sum = 0;
+											for (Product p1 : shopingCart) {
+												sum += p1.getPrice();
+											}
+											if (sum > card.getMoney()) {
+												System.out.println("Nqmate dostatuchno pari v smetkata si!");
+											}
+											else {
+												card.setMoney(card.getMoney() - sum);
+												System.out.println("Chestito kupihte uredite! Shte poluchite suobshtenie v denq na dostavka!");
+												Delivery delivery = new Delivery (user, shopingCart);
+												try {
+													t.addDelivery(delivery);
+												} catch (InterruptedException e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
+												sum = 0;
+												shopingCart.clear();
+											}
+										}
+									case 0:
+										return;					
+									default:
+										System.out.println("Bad input!");
+										break;
+									}
+								}								
+								break;
+							case 4:
+								category = null;
+								flag11 = false;
+								break;
+							case 0:
+								return;					
+							default:
+								System.out.println("Bad input!");
+								break;
+							}
+					
+						}
+				
 					break;
 					case 4:
-						category = Category.ELECTRICAL_APPLIANCE;
-						
-						
+						boolean flag15 = true;
+						while (flag15) {
+							category = Category.ELECTRICAL_APPLIANCE;
+							System.out.println("Natisnete 1 za razglejdane na Klimatici");
+							System.out.println("Natisnete 2 za razglejdane na Miqlni Mashini");
+							System.out.println("Natisnete 3 za razglejdane na Hladilnici");
+							System.out.println("Natisnete 4 za da se vurnete v predishnoto menu");
+							System.out.println("Natisnete 5 za razglejdane na Miqlni Mashini");
+							System.out.println("Natisnete 6 za razglejdane na Mikrovulnovi Pechki");
+							System.out.println("Natisnete 0 za izhod ot saita");
+							int input51 = sc.nextInt();
+							
+							switch (input51) {
+							
+							case 1:
+								boolean flag16 = true;
+								while (flag16) {
+									kind = Kind.AIRCONDITIONER;
+									currentList = t.getProductList(category, kind);
+									currentList.forEach(product -> System.out.println(product));
+									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
+									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
+									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 6 za da se vurnete v predishnoto menu");
+									System.out.println("Natisnete 7 za da dobavqne na ured v kolichkata");
+									System.out.println("Natisnete 8 za pregled na kolichkata vi");
+									System.out.println("Natisnete 9 za kupuvane na uredite v kolichkata vi");
+									System.out.println("Natisnete 0 za izhod ot saita");
+									int input52 = sc.nextInt();
+									
+									switch (input52) {
+									
+									case 1:
+										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 2:
+										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 3:
+										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 4:
+										System.out.println("Molq vuvedete maximalna cena:");
+										int input53 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() < input53).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() < input53)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 5:
+										System.out.println("Molq vuvedete minimalna cena:");
+										int input54 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() > input54).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() > input54)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 6:
+										kind = null;
+										flag16 = false;
+										break;
+									case 7:
+										System.out.println("Molq vuvedete ID na ureda:");
+										int input55 = sc.nextInt();
+										if(!t.containsProductID(category, kind, input55)) {
+											System.out.println("Greshno ID!");
+										}
+										else {
+											if (!t.hasProductInStock(category, kind, input55)) {
+												System.out.println("Ureda ne e nalichen v momenta!");
+												if (hasLoggedIn) {
+													System.out.println("Shte poluchite suobshtenie kogato zaredime broiki!");
+													Request request = new Request(user, t.getProduct(category, kind, input55));
+													try {
+														t.addRequest(request);
+													} catch (InterruptedException e) {
+														// TODO Auto-generated catch block
+														e.printStackTrace();
+													}
+												}
+											}
+											else {
+												shopingCart.add(t.getProduct(category, kind, input55));
+											}
+										}
+										break;
+									case 8:
+										if(shopingCart.isEmpty()) {
+											System.out.println("Kolichkata vi e prazna!");
+										}
+										else {
+											shopingCart.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 9:
+										if (!hasLoggedIn) {
+											System.out.println("Ne ste vleznali v profila si!");
+										}
+										else {
+											System.out.println("Vuvedete nomer na kreditna karta:");
+											String input56 = sc.next();
+											CreditCard card = new CreditCard(input56);
+											int sum = 0;
+											for (Product p1 : shopingCart) {
+												sum += p1.getPrice();
+											}
+											if (sum > card.getMoney()) {
+												System.out.println("Nqmate dostatuchno pari v smetkata si!");
+											}
+											else {
+												card.setMoney(card.getMoney() - sum);
+												System.out.println("Chestito kupihte uredite! Shte poluchite suobshtenie v denq na dostavka!");
+												Delivery delivery = new Delivery (user, shopingCart);
+												try {
+													t.addDelivery(delivery);
+												} catch (InterruptedException e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
+												sum = 0;
+												shopingCart.clear();
+											}
+										}
+									case 0:
+										return;					
+									default:
+										System.out.println("Bad input!");
+										break;
+									}
+								}
+								break;
+							case 2:
+								boolean flag17 = true;
+								while (flag17) {
+									kind = Kind.WASHINGMACHINE;
+									currentList = t.getProductList(category, kind);
+									currentList.forEach(product -> System.out.println(product));
+									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
+									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
+									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 6 za da se vurnete v predishnoto menu");
+									System.out.println("Natisnete 7 za da dobavqne na ured v kolichkata");
+									System.out.println("Natisnete 8 za pregled na kolichkata vi");
+									System.out.println("Natisnete 9 za kupuvane na uredite v kolichkata vi");
+									System.out.println("Natisnete 0 za izhod ot saita");
+									int input57 = sc.nextInt();
+									
+									switch (input57) {
+									
+									case 1:
+										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 2:
+										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 3:
+										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 4:
+										System.out.println("Molq vuvedete maximalna cena:");
+										int input58 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() < input58).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() < input58)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 5:
+										System.out.println("Molq vuvedete minimalna cena:");
+										int input59 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() > input59).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() > input59)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 6:
+										kind = null;
+										flag17 = false;
+										break;
+									case 7:
+										System.out.println("Molq vuvedete ID na ureda:");
+										int input60 = sc.nextInt();
+										if(!t.containsProductID(category, kind, input60)) {
+											System.out.println("Greshno ID!");
+										}
+										else {
+											if (!t.hasProductInStock(category, kind, input60)) {
+												System.out.println("Ureda ne e nalichen v momenta!");
+												if (hasLoggedIn) {
+													System.out.println("Shte poluchite suobshtenie kogato zaredime broiki!");
+													Request request = new Request(user, t.getProduct(category, kind, input60));
+													try {
+														t.addRequest(request);
+													} catch (InterruptedException e) {
+														// TODO Auto-generated catch block
+														e.printStackTrace();
+													}
+												}
+											}
+											else {
+												shopingCart.add(t.getProduct(category, kind, input60));
+											}
+										}
+										break;
+									case 8:
+										if(shopingCart.isEmpty()) {
+											System.out.println("Kolichkata vi e prazna!");
+										}
+										else {
+											shopingCart.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 9:
+										if (!hasLoggedIn) {
+											System.out.println("Ne ste vleznali v profila si!");
+										}
+										else {
+											System.out.println("Vuvedete nomer na kreditna karta:");
+											String input61 = sc.next();
+											CreditCard card = new CreditCard(input61);
+											int sum = 0;
+											for (Product p1 : shopingCart) {
+												sum += p1.getPrice();
+											}
+											if (sum > card.getMoney()) {
+												System.out.println("Nqmate dostatuchno pari v smetkata si!");
+											}
+											else {
+												card.setMoney(card.getMoney() - sum);
+												System.out.println("Chestito kupihte uredite! Shte poluchite suobshtenie v denq na dostavka!");
+												Delivery delivery = new Delivery (user, shopingCart);
+												try {
+													t.addDelivery(delivery);
+												} catch (InterruptedException e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
+												sum = 0;
+												shopingCart.clear();
+											}
+										}
+									case 0:
+										return;					
+									default:
+										System.out.println("Bad input!");
+										break;
+									}
+								}
+								break;
+							case 3:
+								boolean flag18 = true;
+								while (flag18) {
+									kind = Kind.FRIDGE;
+									currentList = t.getProductList(category, kind);
+									currentList.forEach(product -> System.out.println(product));
+									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
+									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
+									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 6 za da se vurnete v predishnoto menu");
+									System.out.println("Natisnete 7 za da dobavqne na ured v kolichkata");
+									System.out.println("Natisnete 8 za pregled na kolichkata vi");
+									System.out.println("Natisnete 9 za kupuvane na uredite v kolichkata vi");
+									System.out.println("Natisnete 0 za izhod ot saita");
+									int input62 = sc.nextInt();
+									
+									switch (input62) {
+									
+									case 1:
+										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 2:
+										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 3:
+										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 4:
+										System.out.println("Molq vuvedete maximalna cena:");
+										int input63 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() < input63).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() < input63)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 5:
+										System.out.println("Molq vuvedete minimalna cena:");
+										int input64 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() > input64).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() > input64)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 6:
+										kind = null;
+										flag18 = false;
+										break;
+									case 7:
+										System.out.println("Molq vuvedete ID na ureda:");
+										int input65 = sc.nextInt();
+										if(!t.containsProductID(category, kind, input65)) {
+											System.out.println("Greshno ID!");
+										}
+										else {
+											if (!t.hasProductInStock(category, kind, input65)) {
+												System.out.println("Ureda ne e nalichen v momenta!");
+												if (hasLoggedIn) {
+													System.out.println("Shte poluchite suobshtenie kogato zaredime broiki!");
+													Request request = new Request(user, t.getProduct(category, kind, input65));
+													try {
+														t.addRequest(request);
+													} catch (InterruptedException e) {
+														// TODO Auto-generated catch block
+														e.printStackTrace();
+													}
+												}
+											}
+											else {
+												shopingCart.add(t.getProduct(category, kind, input65));
+											}
+										}
+										break;
+									case 8:
+										if(shopingCart.isEmpty()) {
+											System.out.println("Kolichkata vi e prazna!");
+										}
+										else {
+											shopingCart.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 9:
+										if (!hasLoggedIn) {
+											System.out.println("Ne ste vleznali v profila si!");
+										}
+										else {
+											System.out.println("Vuvedete nomer na kreditna karta:");
+											String input66 = sc.next();
+											CreditCard card = new CreditCard(input66);
+											int sum = 0;
+											for (Product p1 : shopingCart) {
+												sum += p1.getPrice();
+											}
+											if (sum > card.getMoney()) {
+												System.out.println("Nqmate dostatuchno pari v smetkata si!");
+											}
+											else {
+												card.setMoney(card.getMoney() - sum);
+												System.out.println("Chestito kupihte uredite! Shte poluchite suobshtenie v denq na dostavka!");
+												Delivery delivery = new Delivery (user, shopingCart);
+												try {
+													t.addDelivery(delivery);
+												} catch (InterruptedException e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
+												sum = 0;
+												shopingCart.clear();
+											}
+										}
+									case 0:
+										return;					
+									default:
+										System.out.println("Bad input!");
+										break;
+									}
+								}								
+								break;
+							case 4:
+								category = null;
+								flag15 = false;
+								break;
+							case 5:
+								boolean flag19 = true;
+								while (flag19) {
+									kind = Kind.MICROWAVE;
+									currentList = t.getProductList(category, kind);
+									currentList.forEach(product -> System.out.println(product));
+									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
+									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
+									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 6 za da se vurnete v predishnoto menu");
+									System.out.println("Natisnete 7 za da dobavqne na ured v kolichkata");
+									System.out.println("Natisnete 8 za pregled na kolichkata vi");
+									System.out.println("Natisnete 9 za kupuvane na uredite v kolichkata vi");
+									System.out.println("Natisnete 0 za izhod ot saita");
+									int input67 = sc.nextInt();
+									
+									switch (input67) {
+									
+									case 1:
+										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 2:
+										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 3:
+										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 4:
+										System.out.println("Molq vuvedete maximalna cena:");
+										int input68 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() < input68).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() < input68)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 5:
+										System.out.println("Molq vuvedete minimalna cena:");
+										int input69 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() > input69).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() > input69)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 6:
+										kind = null;
+										flag19 = false;
+										break;
+									case 7:
+										System.out.println("Molq vuvedete ID na ureda:");
+										int input70 = sc.nextInt();
+										if(!t.containsProductID(category, kind, input70)) {
+											System.out.println("Greshno ID!");
+										}
+										else {
+											if (!t.hasProductInStock(category, kind, input70)) {
+												System.out.println("Ureda ne e nalichen v momenta!");
+												if (hasLoggedIn) {
+													System.out.println("Shte poluchite suobshtenie kogato zaredime broiki!");
+													Request request = new Request(user, t.getProduct(category, kind, input70));
+													try {
+														t.addRequest(request);
+													} catch (InterruptedException e) {
+														// TODO Auto-generated catch block
+														e.printStackTrace();
+													}
+												}
+											}
+											else {
+												shopingCart.add(t.getProduct(category, kind, input70));
+											}
+										}
+										break;
+									case 8:
+										if(shopingCart.isEmpty()) {
+											System.out.println("Kolichkata vi e prazna!");
+										}
+										else {
+											shopingCart.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 9:
+										if (!hasLoggedIn) {
+											System.out.println("Ne ste vleznali v profila si!");
+										}
+										else {
+											System.out.println("Vuvedete nomer na kreditna karta:");
+											String input71 = sc.next();
+											CreditCard card = new CreditCard(input71);
+											int sum = 0;
+											for (Product p1 : shopingCart) {
+												sum += p1.getPrice();
+											}
+											if (sum > card.getMoney()) {
+												System.out.println("Nqmate dostatuchno pari v smetkata si!");
+											}
+											else {
+												card.setMoney(card.getMoney() - sum);
+												System.out.println("Chestito kupihte uredite! Shte poluchite suobshtenie v denq na dostavka!");
+												Delivery delivery = new Delivery (user, shopingCart);
+												try {
+													t.addDelivery(delivery);
+												} catch (InterruptedException e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
+												sum = 0;
+												shopingCart.clear();
+											}
+										}
+									case 0:
+										return;					
+									default:
+										System.out.println("Bad input!");
+										break;
+									}
+								}					
+								break;
+							case 6:
+								boolean flag20 = true;
+								while (flag20) {
+									kind = Kind.VACUUMCLEANER;
+									currentList = t.getProductList(category, kind);
+									currentList.forEach(product -> System.out.println(product));
+									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
+									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
+									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 6 za da se vurnete v predishnoto menu");
+									System.out.println("Natisnete 7 za da dobavqne na ured v kolichkata");
+									System.out.println("Natisnete 8 za pregled na kolichkata vi");
+									System.out.println("Natisnete 9 za kupuvane na uredite v kolichkata vi");
+									System.out.println("Natisnete 0 za izhod ot saita");
+									int input72 = sc.nextInt();
+									
+									switch (input72) {
+									
+									case 1:
+										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 2:
+										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 3:
+										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 4:
+										System.out.println("Molq vuvedete maximalna cena:");
+										int input73 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() < input73).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() < input73)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 5:
+										System.out.println("Molq vuvedete minimalna cena:");
+										int input74 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() > input74).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() > input74)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 6:
+										kind = null;
+										flag20 = false;
+										break;
+									case 7:
+										System.out.println("Molq vuvedete ID na ureda:");
+										int input75 = sc.nextInt();
+										if(!t.containsProductID(category, kind, input75)) {
+											System.out.println("Greshno ID!");
+										}
+										else {
+											if (!t.hasProductInStock(category, kind, input75)) {
+												System.out.println("Ureda ne e nalichen v momenta!");
+												if (hasLoggedIn) {
+													System.out.println("Shte poluchite suobshtenie kogato zaredime broiki!");
+													Request request = new Request(user, t.getProduct(category, kind, input75));
+													try {
+														t.addRequest(request);
+													} catch (InterruptedException e) {
+														// TODO Auto-generated catch block
+														e.printStackTrace();
+													}
+												}
+											}
+											else {
+												shopingCart.add(t.getProduct(category, kind, input75));
+											}
+										}
+										break;
+									case 8:
+										if(shopingCart.isEmpty()) {
+											System.out.println("Kolichkata vi e prazna!");
+										}
+										else {
+											shopingCart.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 9:
+										if (!hasLoggedIn) {
+											System.out.println("Ne ste vleznali v profila si!");
+										}
+										else {
+											System.out.println("Vuvedete nomer na kreditna karta:");
+											String input76 = sc.next();
+											CreditCard card = new CreditCard(input76);
+											int sum = 0;
+											for (Product p1 : shopingCart) {
+												sum += p1.getPrice();
+											}
+											if (sum > card.getMoney()) {
+												System.out.println("Nqmate dostatuchno pari v smetkata si!");
+											}
+											else {
+												card.setMoney(card.getMoney() - sum);
+												System.out.println("Chestito kupihte uredite! Shte poluchite suobshtenie v denq na dostavka!");
+												Delivery delivery = new Delivery (user, shopingCart);
+												try {
+													t.addDelivery(delivery);
+												} catch (InterruptedException e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
+												sum = 0;
+												shopingCart.clear();
+											}
+										}
+									case 0:
+										return;					
+									default:
+										System.out.println("Bad input!");
+										break;
+									}
+								}
+								break;
+							case 0:
+								return;					
+							default:
+								System.out.println("Bad input!");
+								break;
+							}
+					
+						}
+		
 					break;
 					case 5:
-						category = Category.PHOTO_VIDEO;
-						
-						
+						boolean flag21 = true;
+						while (flag21) {
+							category = Category.PHOTO_VIDEO;
+							System.out.println("Natisnete 1 za razglejdane na Kameri");
+							System.out.println("Natisnete 2 za da se vurnete v predishnoto menu");
+							System.out.println("Natisnete 0 za izhod ot saita");
+							int input77 = sc.nextInt();
+							
+							switch (input77) {
+							
+							case 1:
+								boolean flag22 = true;
+								while (flag22) {
+									kind = Kind.CAMERA;
+									currentList = t.getProductList(category, kind);
+									currentList.forEach(product -> System.out.println(product));
+									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
+									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
+									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
+									System.out.println("Natisnete 6 za da se vurnete v predishnoto menu");
+									System.out.println("Natisnete 7 za da dobavqne na ured v kolichkata");
+									System.out.println("Natisnete 8 za pregled na kolichkata vi");
+									System.out.println("Natisnete 9 za kupuvane na uredite v kolichkata vi");
+									System.out.println("Natisnete 0 za izhod ot saita");
+									int input78 = sc.nextInt();
+									
+									switch (input78) {
+									
+									case 1:
+										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 2:
+										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 3:
+										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
+										currentList.forEach(product -> System.out.println(product));
+										break;
+									case 4:
+										System.out.println("Molq vuvedete maximalna cena:");
+										int input79 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() < input79).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() < input79)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 5:
+										System.out.println("Molq vuvedete minimalna cena:");
+										int input80 = sc.nextInt();
+										if (currentList.stream().filter(product -> product.getPrice() > input80).count() == 0) {
+											System.out.println("Nqma uredi koito otgovarqt na turseneto");
+										}
+										else {
+											currentList = currentList.stream().filter(product -> product.getPrice() > input80)
+													.collect(Collectors.toCollection(LinkedList::new));
+											currentList.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 6:
+										kind = null;
+										flag22 = false;
+										break;
+									case 7:
+										System.out.println("Molq vuvedete ID na ureda:");
+										int input81 = sc.nextInt();
+										if(!t.containsProductID(category, kind, input81)) {
+											System.out.println("Greshno ID!");
+										}
+										else {
+											if (!t.hasProductInStock(category, kind, input81)) {
+												System.out.println("Ureda ne e nalichen v momenta!");
+												if (hasLoggedIn) {
+													System.out.println("Shte poluchite suobshtenie kogato zaredime broiki!");
+													Request request = new Request(user, t.getProduct(category, kind, input81));
+													try {
+														t.addRequest(request);
+													} catch (InterruptedException e) {
+														// TODO Auto-generated catch block
+														e.printStackTrace();
+													}
+												}
+											}
+											else {
+												shopingCart.add(t.getProduct(category, kind, input81));
+											}
+										}
+										break;
+									case 8:
+										if(shopingCart.isEmpty()) {
+											System.out.println("Kolichkata vi e prazna!");
+										}
+										else {
+											shopingCart.forEach(product -> System.out.println(product));
+										}
+										break;
+									case 9:
+										if (!hasLoggedIn) {
+											System.out.println("Ne ste vleznali v profila si!");
+										}
+										else {
+											System.out.println("Vuvedete nomer na kreditna karta:");
+											String input82 = sc.next();
+											CreditCard card = new CreditCard(input82);
+											int sum = 0;
+											for (Product p1 : shopingCart) {
+												sum += p1.getPrice();
+											}
+											if (sum > card.getMoney()) {
+												System.out.println("Nqmate dostatuchno pari v smetkata si!");
+											}
+											else {
+												card.setMoney(card.getMoney() - sum);
+												System.out.println("Chestito kupihte uredite! Shte poluchite suobshtenie v denq na dostavka!");
+												Delivery delivery = new Delivery (user, shopingCart);
+												try {
+													t.addDelivery(delivery);
+												} catch (InterruptedException e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
+												sum = 0;
+												shopingCart.clear();
+											}
+										}
+									case 0:
+										return;					
+									default:
+										System.out.println("Bad input!");
+										break;
+									}
+								}
+								break;
+							case 2:
+								category = null;
+								flag21 = false;
+								break;
+							case 0:
+								return;					
+							default:
+								System.out.println("Bad input!");
+								break;
+							}
+					
+						}		
 					break;
 					case 6:
 						flag2 = false;
