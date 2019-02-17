@@ -1,5 +1,4 @@
 package products;
-import java.awt.Color;
 import java.util.Random;
 
 import brands.*;
@@ -27,12 +26,7 @@ public abstract class Product {
 	
 	
 	public static Color getRandomColor() {
-		Random r=new Random();
-		int red = r.nextInt(256);
-		int green = r.nextInt(256);
-		int blue = r.nextInt(256);
-		
-		return new Color(red, green, blue);
+		return Color.values()[new Random().nextInt(Color.values().length)];
 	}
 	
 	public static class Television extends Product{

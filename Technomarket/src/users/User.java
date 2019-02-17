@@ -8,9 +8,9 @@ public class User {
 	private static final int MIN_LENGTH_PASS = 6;
 	private static final int MIN_LENGTH_LASTNAME = 6;
 	private static final int MIN_LENGTH_FIRSTNAME = 4;
-//	public enum Gender{
-//		MALE,FEMALE
-//	}
+	
+	private static int lastUserID = 1;
+
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -19,6 +19,7 @@ public class User {
 	private LocalDate birthDate;
 	private boolean isLogged;
 	private boolean isAdmin;
+	private int userID;
 	
 	public User(String firstName, String lastName, String email, String password, Gender gender, LocalDate birthDate) {
 		setFirstName(firstName);
@@ -29,6 +30,7 @@ public class User {
 		setBirthDate(birthDate);
 		setLogged(false);
 		setAdmin(false);
+		this.userID=User.lastUserID++;
 	}
 	
 	@Override
@@ -107,6 +109,9 @@ public class User {
 	}
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
-	}	
+	}
+	public int getUserID() {
+		return userID;
+	}
 	
 }
