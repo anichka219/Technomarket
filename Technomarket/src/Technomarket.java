@@ -57,7 +57,9 @@ public class Technomarket {
 		for(int i =0; i < rnd; i++)
 		{		
 			Product p = getProduct(category,kind);
-			products.get(category).get(kind).put(p, new Random().nextInt(MAX_PRODUCT_COUNT));		
+			products.get(category).get(kind).put(p, new Random().nextInt(MAX_PRODUCT_COUNT));
+			DBManager.getInstance().addProduct(p);
+
 		}	
 	}
 	
@@ -132,6 +134,7 @@ public class Technomarket {
 		this.users=new HashMap<String,User>();
 		this.deliveries = new ArrayBlockingQueue<Delivery>(100);
 		this.requests = new ArrayBlockingQueue<Request>(100);
+		DBManager.getInstance().deleteProducts();
 		init();			
 	}
 	
@@ -320,6 +323,7 @@ public class Technomarket {
 	public void add(User user) {
 		if (user != null) {
 			this.users.put(user.getEmail(), user);
+			DBManager.getInstance().addUser(user);
 		}
 	}
 	
