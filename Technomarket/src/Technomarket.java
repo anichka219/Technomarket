@@ -43,12 +43,89 @@ public class Technomarket {
 	private ArrayBlockingQueue<Request> requests;;
 	private static Technomarket technomarket=null;
 	
+	private void initProducts(Category category,Kind kind)
+	{
+		int rnd = new Random().nextInt(10)+1;		
+		
+		for(int i =0; i < rnd; i++)
+		{		
+			Product p = getProduct(category,kind);
+			products.get(category).get(kind).put(p, new Random().nextInt(10)+1);		
+		}	
+	}
+	
+	private void initKinds(Category category)
+	{	
+		switch(category)
+		{		
+		case TV_AUDIO:
+			this.products.get(Category.TV_AUDIO).put(Kind.TELEVISION, new HashMap<Product,Integer>());
+			initProducts(category,Kind.TELEVISION);
+			this.products.get(Category.TV_AUDIO).put(Kind.HOMECINEMA, new HashMap<Product,Integer>());
+			initProducts(category,Kind.HOMECINEMA);
+			this.products.get(Category.TV_AUDIO).put(Kind.AUDIOSYSTEM, new HashMap<Product,Integer>());
+			initProducts(category,Kind.AUDIOSYSTEM);
+			break;
+			
+		case CP_PERIPHERALS:
+			this.products.get(Category.CP_PERIPHERALS).put(Kind.LAPTOP, new HashMap<Product,Integer>());
+			initProducts(category,Kind.LAPTOP);
+			this.products.get(Category.CP_PERIPHERALS).put(Kind.COMPUTER, new HashMap<Product,Integer>());
+			initProducts(category,Kind.COMPUTER);
+			this.products.get(Category.CP_PERIPHERALS).put(Kind.MONITOR, new HashMap<Product,Integer>());
+			initProducts(category,Kind.MONITOR);
+			break;
+			
+		case PHONES_TABLETS:
+			this.products.get(Category.PHONES_TABLETS).put(Kind.PHONE, new HashMap<Product,Integer>());
+			initProducts(category,Kind.PHONE);
+			this.products.get(Category.PHONES_TABLETS).put(Kind.SMARTWATCH, new HashMap<Product,Integer>());
+			initProducts(category,Kind.SMARTWATCH);
+			this.products.get(Category.PHONES_TABLETS).put(Kind.TABLET, new HashMap<Product,Integer>());
+			initProducts(category,Kind.TABLET);
+			break;
+			
+		case ELECTRICAL_APPLIANCE:
+			this.products.get(Category.ELECTRICAL_APPLIANCE).put(Kind.AIRCONDITIONER, new HashMap<Product,Integer>());
+			initProducts(category,Kind.AIRCONDITIONER);
+			this.products.get(Category.ELECTRICAL_APPLIANCE).put(Kind.FRIDGE, new HashMap<Product,Integer>());
+			initProducts(category,Kind.FRIDGE);
+			this.products.get(Category.ELECTRICAL_APPLIANCE).put(Kind.MICROWAVE, new HashMap<Product,Integer>());
+			initProducts(category,Kind.MICROWAVE);
+			this.products.get(Category.ELECTRICAL_APPLIANCE).put(Kind.VACUUMCLEANER, new HashMap<Product,Integer>());
+			initProducts(category,Kind.VACUUMCLEANER);
+			this.products.get(Category.ELECTRICAL_APPLIANCE).put(Kind.WASHINGMACHINE, new HashMap<Product,Integer>());
+			initProducts(category,Kind.WASHINGMACHINE);
+			break;
+		case PHOTO_VIDEO:
+			this.products.get(Category.PHOTO_VIDEO).put(Kind.CAMERA, new HashMap<Product,Integer>());
+			initProducts(category,Kind.CAMERA);			
+			break;
+		}		
+		
+	}
+	private void init()
+	{		
+		this.products.put(Category.TV_AUDIO, new HashMap<Kind, Map<Product,Integer>>());
+		initKinds(Category.TV_AUDIO);		
+		this.products.put(Category.CP_PERIPHERALS, new HashMap<Kind, Map<Product,Integer>>());
+		initKinds(Category.CP_PERIPHERALS);		
+		this.products.put(Category.PHONES_TABLETS, new HashMap<Kind, Map<Product,Integer>>());
+		initKinds(Category.PHONES_TABLETS);		
+		this.products.put(Category.ELECTRICAL_APPLIANCE, new HashMap<Kind, Map<Product,Integer>>());
+		initKinds(Category.ELECTRICAL_APPLIANCE);		
+		this.products.put(Category.PHOTO_VIDEO, new HashMap<Kind, Map<Product,Integer>>());				
+		initKinds(Category.PHOTO_VIDEO);
+	}
+	
+
 	
 	private Technomarket() {
 		this.products=new HashMap();
 		this.users=new HashMap<String,User>();
 		this.deliveries = new ArrayBlockingQueue<Delivery>(100);
 		this.requests = new ArrayBlockingQueue<Request>(100);
+		init();			
 	}
 	
 	public static Technomarket getInstance() {

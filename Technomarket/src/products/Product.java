@@ -171,6 +171,13 @@ public abstract class Product {
 	
 	}
 	
+	
+	@Override
+	public String toString() {
+		return model + " | " + price  + " | " + color + " | " + brand;
+	}
+
+
 	public String getModel() {
 		return model;
 	}
