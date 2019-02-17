@@ -174,7 +174,7 @@ public abstract class Product {
 	
 	@Override
 	public String toString() {
-		return model + " | " + price  + " | " + color + " | " + brand;
+		return model + " | " + price  + " | " + color + " | " + brand + " | " + productID;
 	}
 
 

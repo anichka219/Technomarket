@@ -325,9 +325,9 @@ public class Technomarket {
 
 	public boolean containsProductID(Category category, Kind kind, int input7) {
 		HashSet<Product> tempSet = new HashSet<Product>();
-		tempSet = (HashSet<Product>) this.products.get(category).get(kind).keySet();
+		//tempSet = (HashSet<Product>) this.products.get(category).get(kind).keySet();
 		boolean contains = false;
-		for (Product p : tempSet) {
+		for (Product p : this.products.get(category).get(kind).keySet()) {
 			if (p.getProductID() == input7) {
 				contains = true;
 				break;
@@ -338,9 +338,9 @@ public class Technomarket {
 
 	public Product getProduct(Category category, Kind kind, int input7) {
 		HashSet<Product> tempSet = new HashSet<Product>();
-		tempSet = (HashSet<Product>) this.products.get(category).get(kind).keySet();
+		//tempSet = (HashSet<Product>) this.products.get(category).get(kind).keySet();
 		Product product = null;
-		for (Product p : tempSet) {
+		for (Product p : this.products.get(category).get(kind).keySet()) {
 			if (p.getProductID() == input7) {
 				product = p;
 				break;
@@ -351,10 +351,10 @@ public class Technomarket {
 
 	public boolean hasProductInStock(Category category, Kind kind, int input7) {
 		HashSet<Product> tempSet = new HashSet<Product>();
-		tempSet = (HashSet<Product>) this.products.get(category).get(kind).keySet();
+		//tempSet = (HashSet<Product>) this.products.get(category).get(kind).keySet();
 		boolean contains = false;
 		Product product = null;
-		for (Product p : tempSet) {
+		for (Product p : this.products.get(category).get(kind).keySet()) {
 			if (p.getProductID() == input7) {
 				product = p;
 				break;

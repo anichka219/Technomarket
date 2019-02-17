@@ -167,12 +167,13 @@ public class Demo {
 							
 							case 1:
 								boolean flag4 = true;
+								kind = Kind.TELEVISION;
+								currentList = t.getProductList(category, kind);
 								while (flag4) {
-									kind = Kind.TELEVISION;
-									currentList = t.getProductList(category, kind);
+									
 									currentList.forEach(product -> System.out.println(product));
-									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
-									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
 									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
 									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
@@ -186,16 +187,22 @@ public class Demo {
 									switch (input4) {
 									
 									case 1:
-										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 2:
-										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 3:
-										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> p1.getModel().compareTo(p2.getModel()))
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 4:
 										System.out.println("Molq vuvedete maximalna cena:");
@@ -287,6 +294,7 @@ public class Demo {
 												shopingCart.clear();
 											}
 										}
+										break;
 									case 0:
 										return;					
 									default:
@@ -297,12 +305,13 @@ public class Demo {
 								break;
 							case 2:
 								boolean flag5 = true;
+								kind = Kind.HOMECINEMA;
+								currentList = t.getProductList(category, kind);
 								while (flag5) {
-									kind = Kind.HOMECINEMA;
-									currentList = t.getProductList(category, kind);
+									
 									currentList.forEach(product -> System.out.println(product));
-									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
-									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
 									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
 									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
@@ -316,16 +325,22 @@ public class Demo {
 									switch (input9) {
 									
 									case 1:
-										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 2:
-										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 3:
-										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> p1.getModel().compareTo(p2.getModel()))
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 4:
 										System.out.println("Molq vuvedete maximalna cena:");
@@ -417,6 +432,7 @@ public class Demo {
 												shopingCart.clear();
 											}
 										}
+										break;
 									case 0:
 										return;					
 									default:
@@ -427,12 +443,13 @@ public class Demo {
 								break;
 							case 3:
 								boolean flag6 = true;
+								kind = Kind.AUDIOSYSTEM;
+								currentList = t.getProductList(category, kind);
 								while (flag6) {
-									kind = Kind.AUDIOSYSTEM;
-									currentList = t.getProductList(category, kind);
+									
 									currentList.forEach(product -> System.out.println(product));
-									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
-									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
 									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
 									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
@@ -446,16 +463,22 @@ public class Demo {
 									switch (input14) {
 									
 									case 1:
-										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 2:
-										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 3:
-										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> p1.getModel().compareTo(p2.getModel()))
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 4:
 										System.out.println("Molq vuvedete maximalna cena:");
@@ -547,6 +570,7 @@ public class Demo {
 												shopingCart.clear();
 											}
 										}
+										break;
 									case 0:
 										return;					
 									default:
@@ -583,12 +607,13 @@ public class Demo {
 							
 							case 1:
 								boolean flag8 = true;
+								kind = Kind.LAPTOP;
+								currentList = t.getProductList(category, kind);
 								while (flag8) {
-									kind = Kind.LAPTOP;
-									currentList = t.getProductList(category, kind);
+									
 									currentList.forEach(product -> System.out.println(product));
-									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
-									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
 									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
 									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
@@ -602,16 +627,22 @@ public class Demo {
 									switch (input20) {
 									
 									case 1:
-										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 2:
-										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 3:
-										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> p1.getModel().compareTo(p2.getModel()))
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 4:
 										System.out.println("Molq vuvedete maximalna cena:");
@@ -703,6 +734,7 @@ public class Demo {
 												shopingCart.clear();
 											}
 										}
+										break;
 									case 0:
 										return;					
 									default:
@@ -713,12 +745,13 @@ public class Demo {
 								break;
 							case 2:
 								boolean flag9 = true;
+								kind = Kind.COMPUTER;
+								currentList = t.getProductList(category, kind);
 								while (flag9) {
-									kind = Kind.COMPUTER;
-									currentList = t.getProductList(category, kind);
+									
 									currentList.forEach(product -> System.out.println(product));
-									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
-									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
 									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
 									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
@@ -732,16 +765,22 @@ public class Demo {
 									switch (input25) {
 									
 									case 1:
-										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 2:
-										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 3:
-										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> p1.getModel().compareTo(p2.getModel()))
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 4:
 										System.out.println("Molq vuvedete maximalna cena:");
@@ -833,6 +872,7 @@ public class Demo {
 												shopingCart.clear();
 											}
 										}
+										break;
 									case 0:
 										return;					
 									default:
@@ -843,12 +883,13 @@ public class Demo {
 								break;
 							case 3:
 								boolean flag10 = true;
+								kind = Kind.MONITOR;
+								currentList = t.getProductList(category, kind);
 								while (flag10) {
-									kind = Kind.MONITOR;
-									currentList = t.getProductList(category, kind);
+									
 									currentList.forEach(product -> System.out.println(product));
-									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
-									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
 									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
 									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
@@ -862,16 +903,22 @@ public class Demo {
 									switch (input30) {
 									
 									case 1:
-										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 2:
-										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 3:
-										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> p1.getModel().compareTo(p2.getModel()))
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 4:
 										System.out.println("Molq vuvedete maximalna cena:");
@@ -963,6 +1010,7 @@ public class Demo {
 												shopingCart.clear();
 											}
 										}
+										break;
 									case 0:
 										return;					
 									default:
@@ -1000,12 +1048,13 @@ public class Demo {
 							
 							case 1:
 								boolean flag12 = true;
+								kind = Kind.PHONE;
+								currentList = t.getProductList(category, kind);
 								while (flag12) {
-									kind = Kind.PHONE;
-									currentList = t.getProductList(category, kind);
+									
 									currentList.forEach(product -> System.out.println(product));
-									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
-									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
 									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
 									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
@@ -1019,16 +1068,22 @@ public class Demo {
 									switch (input36) {
 									
 									case 1:
-										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 2:
-										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 3:
-										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> p1.getModel().compareTo(p2.getModel()))
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 4:
 										System.out.println("Molq vuvedete maximalna cena:");
@@ -1120,6 +1175,7 @@ public class Demo {
 												shopingCart.clear();
 											}
 										}
+										break;
 									case 0:
 										return;					
 									default:
@@ -1130,12 +1186,13 @@ public class Demo {
 								break;
 							case 2:
 								boolean flag13 = true;
+								kind = Kind.SMARTWATCH;
+								currentList = t.getProductList(category, kind);
 								while (flag13) {
-									kind = Kind.SMARTWATCH;
-									currentList = t.getProductList(category, kind);
+									
 									currentList.forEach(product -> System.out.println(product));
-									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
-									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
 									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
 									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
@@ -1149,16 +1206,22 @@ public class Demo {
 									switch (input41) {
 									
 									case 1:
-										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 2:
-										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 3:
-										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> p1.getModel().compareTo(p2.getModel()))
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 4:
 										System.out.println("Molq vuvedete maximalna cena:");
@@ -1250,6 +1313,7 @@ public class Demo {
 												shopingCart.clear();
 											}
 										}
+										break;
 									case 0:
 										return;					
 									default:
@@ -1260,12 +1324,13 @@ public class Demo {
 								break;
 							case 3:
 								boolean flag14 = true;
+								kind = Kind.TABLET;
+								currentList = t.getProductList(category, kind);
 								while (flag14) {
-									kind = Kind.TABLET;
-									currentList = t.getProductList(category, kind);
+									
 									currentList.forEach(product -> System.out.println(product));
-									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
-									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
 									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
 									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
@@ -1279,16 +1344,22 @@ public class Demo {
 									switch (input46) {
 									
 									case 1:
-										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 2:
-										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 3:
-										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> p1.getModel().compareTo(p2.getModel()))
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 4:
 										System.out.println("Molq vuvedete maximalna cena:");
@@ -1380,6 +1451,7 @@ public class Demo {
 												shopingCart.clear();
 											}
 										}
+										break;
 									case 0:
 										return;					
 									default:
@@ -1419,12 +1491,13 @@ public class Demo {
 							
 							case 1:
 								boolean flag16 = true;
+								kind = Kind.AIRCONDITIONER;
+								currentList = t.getProductList(category, kind);
 								while (flag16) {
-									kind = Kind.AIRCONDITIONER;
-									currentList = t.getProductList(category, kind);
+									
 									currentList.forEach(product -> System.out.println(product));
-									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
-									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
 									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
 									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
@@ -1438,16 +1511,22 @@ public class Demo {
 									switch (input52) {
 									
 									case 1:
-										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 2:
-										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 3:
-										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> p1.getModel().compareTo(p2.getModel()))
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 4:
 										System.out.println("Molq vuvedete maximalna cena:");
@@ -1539,6 +1618,7 @@ public class Demo {
 												shopingCart.clear();
 											}
 										}
+										break;
 									case 0:
 										return;					
 									default:
@@ -1549,12 +1629,13 @@ public class Demo {
 								break;
 							case 2:
 								boolean flag17 = true;
+								kind = Kind.WASHINGMACHINE;
+								currentList = t.getProductList(category, kind);
 								while (flag17) {
-									kind = Kind.WASHINGMACHINE;
-									currentList = t.getProductList(category, kind);
+									
 									currentList.forEach(product -> System.out.println(product));
-									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
-									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
 									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
 									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
@@ -1568,16 +1649,22 @@ public class Demo {
 									switch (input57) {
 									
 									case 1:
-										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 2:
-										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 3:
-										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> p1.getModel().compareTo(p2.getModel()))
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 4:
 										System.out.println("Molq vuvedete maximalna cena:");
@@ -1669,6 +1756,7 @@ public class Demo {
 												shopingCart.clear();
 											}
 										}
+										break;
 									case 0:
 										return;					
 									default:
@@ -1679,12 +1767,13 @@ public class Demo {
 								break;
 							case 3:
 								boolean flag18 = true;
+								kind = Kind.FRIDGE;
+								currentList = t.getProductList(category, kind);
 								while (flag18) {
-									kind = Kind.FRIDGE;
-									currentList = t.getProductList(category, kind);
+									
 									currentList.forEach(product -> System.out.println(product));
-									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
-									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
 									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
 									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
@@ -1698,16 +1787,22 @@ public class Demo {
 									switch (input62) {
 									
 									case 1:
-										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 2:
-										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 3:
-										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> p1.getModel().compareTo(p2.getModel()))
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 4:
 										System.out.println("Molq vuvedete maximalna cena:");
@@ -1799,6 +1894,7 @@ public class Demo {
 												shopingCart.clear();
 											}
 										}
+										break;
 									case 0:
 										return;					
 									default:
@@ -1813,12 +1909,13 @@ public class Demo {
 								break;
 							case 5:
 								boolean flag19 = true;
+								kind = Kind.MICROWAVE;
+								currentList = t.getProductList(category, kind);
 								while (flag19) {
-									kind = Kind.MICROWAVE;
-									currentList = t.getProductList(category, kind);
+									
 									currentList.forEach(product -> System.out.println(product));
-									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
-									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
 									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
 									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
@@ -1832,16 +1929,22 @@ public class Demo {
 									switch (input67) {
 									
 									case 1:
-										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 2:
-										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 3:
-										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> p1.getModel().compareTo(p2.getModel()))
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 4:
 										System.out.println("Molq vuvedete maximalna cena:");
@@ -1933,6 +2036,7 @@ public class Demo {
 												shopingCart.clear();
 											}
 										}
+										break;
 									case 0:
 										return;					
 									default:
@@ -1943,12 +2047,13 @@ public class Demo {
 								break;
 							case 6:
 								boolean flag20 = true;
+								kind = Kind.VACUUMCLEANER;
+								currentList = t.getProductList(category, kind);
 								while (flag20) {
-									kind = Kind.VACUUMCLEANER;
-									currentList = t.getProductList(category, kind);
+								
 									currentList.forEach(product -> System.out.println(product));
-									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
-									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
 									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
 									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
@@ -1962,16 +2067,22 @@ public class Demo {
 									switch (input72) {
 									
 									case 1:
-										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 2:
-										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 3:
-										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> p1.getModel().compareTo(p2.getModel()))
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 4:
 										System.out.println("Molq vuvedete maximalna cena:");
@@ -2063,6 +2174,7 @@ public class Demo {
 												shopingCart.clear();
 											}
 										}
+										break;
 									case 0:
 										return;					
 									default:
@@ -2094,12 +2206,13 @@ public class Demo {
 							
 							case 1:
 								boolean flag22 = true;
+								kind = Kind.CAMERA;
+								currentList = t.getProductList(category, kind);
 								while (flag22) {
-									kind = Kind.CAMERA;
-									currentList = t.getProductList(category, kind);
+									
 									currentList.forEach(product -> System.out.println(product));
-									System.out.println("Natisnete 1 za sortirane po cena v nizhodqsh red");
-									System.out.println("Natisnete 2 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
+									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
 									System.out.println("Natisnete 4 za filtrirane po maximalna cena");
 									System.out.println("Natisnete 5 za filtrirane po maximalna cena");
@@ -2113,16 +2226,22 @@ public class Demo {
 									switch (input78) {
 									
 									case 1:
-										currentList.sort( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p1.getPrice() - (int)p2.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 2:
-										currentList.sort( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice());
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> (int)p2.getPrice() - (int)p1.getPrice())
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 3:
-										currentList.sort( (p1,p2) -> p1.getModel().compareTo(p2.getModel()));
-										currentList.forEach(product -> System.out.println(product));
+										currentList = currentList.stream()
+										.sorted( (p1,p2) -> p1.getModel().compareTo(p2.getModel()))
+										.collect(Collectors.toCollection(LinkedList::new));
+										
 										break;
 									case 4:
 										System.out.println("Molq vuvedete maximalna cena:");
@@ -2214,6 +2333,7 @@ public class Demo {
 												shopingCart.clear();
 											}
 										}
+										break;
 									case 0:
 										return;					
 									default:
