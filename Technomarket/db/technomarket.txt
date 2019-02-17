@@ -1,0 +1,155 @@
+DROP SCHEMA IF EXISTS technomarket;
+
+CREATE SCHEMA technomarket COLLATE = utf8_general_ci;
+
+USE technomarket;
+
+create table users(
+id int not null,
+first_name VARCHAR(20) not null,
+last_name VARCHAR(25) NOT NULL,
+email VARCHAR(25) NOT NULL,
+password varchar(25) not null,
+gender varchar(6) not null,
+birthDate date not null,
+isLoggeed boolean,
+isAdmin boolean,
+primary key(id)
+);
+
+create table categories(
+id int not null,
+category_name varchar(25) not null,
+primary key(id)
+);
+
+create table kinds(
+id int not null,
+kind_name varchar(25) not null,
+category_id int not null,
+primary key(id), 
+constraint fk_categories_kinds foreign key (category_id) references categories(id)
+);
+
+create table brands(
+id int not null,
+brand_name varchar(25) not null,
+primary key(id)
+);
+
+create table products(
+id int not null,
+model varchar(45) not null,
+price decimal(8,2) not null,
+description varchar(10000),
+color varchar(20),
+kind_id int not null,
+brand_id int not null,
+primary key (id),
+constraint fk_products_kinds foreign key (kind_id) references kinds(id),
+constraint fk_products_brands foreign key (brand_id) references brands(id)
+);
+
+commit;
+
+insert into categories values(1,'TV and audio');
+insert into categories values(2,'Computers and peripherals');
+insert into categories values(3,'Phones and tablets');
+insert into categories values(4,'Electrical appliance');
+insert into categories values(5,'Photo and video');
+
+insert into kinds values (1,'Television',1);
+insert into kinds values (2,'Home cinema',1);
+insert into kinds values (3,'Audio system',1);
+insert into kinds values (4,'Laptop',2);
+insert into kinds values (5,'Computer',2);
+insert into kinds values (6,'Monitor',2);
+insert into kinds values (7,'Phone',3);
+insert into kinds values (8,'Smartwatch',3);
+insert into kinds values (9,'Tablet',3);
+insert into kinds values (10,'Air-conditioner',4);
+insert into kinds values (11,'Washing machine',4);
+insert into kinds values (12,'Fridge',4);
+insert into kinds values (13,'Microwave',4);
+insert into kinds values (14,'Vacuum cleaner',4);
+insert into kinds values (15,'Camera',5);
+
+insert into brands values(1,'AEG');
+insert into brands values(2,'AGU');
+insert into brands values(3,'ACER');
+insert into brands values(4,'ALCATEL');
+insert into brands values(5,'ALLVIEW');
+insert into brands values(6,'AMICA');
+insert into brands values(7,'APPLE');
+insert into brands values(8,'ASUS');
+insert into brands values(9,'BOSCH');
+insert into brands values(10,'BENQ');
+insert into brands values(11,'CELLULAR');
+insert into brands values(12,'CAT');
+insert into brands values(13,'DIVA');
+insert into brands values(14,'DOOGEE');
+insert into brands values(15,'ELECTROLUX');
+insert into brands values(16,'BRAVISSIMO');
+insert into brands values(17,'DAEWOO');
+insert into brands values(18,'DYSON');
+insert into brands values(19,'ENERGIZER');
+insert into brands values(20,'GORENJE');
+insert into brands values(21,'GOLLA');
+insert into brands values(22,'HISENSE');
+insert into brands values(23,'HOTPOINT ARISTON');
+insert into brands values(24,'HP');
+insert into brands values(25,'HONOR');
+insert into brands values(26,'HTC');
+insert into brands values(27,'HUAWEI');
+insert into brands values(28,'FIBIT');
+insert into brands values(29,'GARMIN');
+insert into brands values(30,'INDESIT');
+insert into brands values(31,'IROBOT');
+insert into brands values(32,'KARCHER');
+insert into brands values(33,'LEMFO');
+insert into brands values(34,'LENOVO');
+insert into brands values(35,'LG');
+insert into brands values(36,'LIEBHERR');
+insert into brands values(37,'JAMO');
+insert into brands values(38,'JUST5');
+insert into brands values(39,'MAXCOM');
+insert into brands values(40,'MEIZU');
+insert into brands values(41,'MICROSOFT');
+insert into brands values(42,'MOTOROLA');
+insert into brands values(43,'MYPHONE');
+insert into brands values(44,'MIDEA');
+insert into brands values(45,'MIELE');
+insert into brands values(46,'MYDOMO');
+insert into brands values(47,'NEO');
+insert into brands values(48,'NAVITEL');
+insert into brands values(49,'NOKIA');
+insert into brands values(50,'PANASONIC');
+insert into brands values(51,'PHILIPS');
+insert into brands values(52,'PIONEER');
+insert into brands values(53,'DAIKIN');
+insert into brands values(54,'FUJITSU');
+insert into brands values(55,'ROHNSON');
+insert into brands values(56,'ROWENTA');
+insert into brands values(57,'RUSSELL HOBBS');
+insert into brands values(58,'SAMSUNG');
+insert into brands values(59,'SAPIR');
+insert into brands values(60,'SINGER');
+insert into brands values(61,'SKYWORTH');
+insert into brands values(62,'SONY');
+insert into brands values(63,'STRONG');
+insert into brands values(64,'CANON');
+insert into brands values(65,'BLAUPUNKT');
+insert into brands values(66,'TESLA');
+insert into brands values(67,'TEKA');
+insert into brands values(68,'VORTEX');
+insert into brands values(69,'WHIRLPOOL');
+insert into brands values(70,'XIAOMI');
+insert into brands values(71,'XMART');
+insert into brands values(72,'ZANUSSI');
+insert into brands values(73,'ZELMER');
+insert into brands values(74,'ZEPHYR');
+insert into brands values(75,'ZTE');
+
+insert into users values(0,'test','test','test@test.com','123456','male','2000-01-01',null,true);
+
+commit;
