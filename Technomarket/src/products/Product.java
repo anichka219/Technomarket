@@ -168,7 +168,10 @@ public abstract class Product {
 	
 	@Override
 	public String toString() {
-		return model + " | " + price  + " | " + color + " | " + brand + " | " + productID;
+		return String.format("%s %5d %s %-20s %-10s %10.2f %s %20s %s"," |",this.productID, " | " ,this.model,"|", 
+				this.price," | ", this.brand,"|");
+		//return String.format("%25s %15s %f %25s %10s %10s", this.model, "|", this.price, "|", this.brand,"|",this.productID);
+		//return "| "+model + " | " + price  + " | " + color + " | " + brand + " | " + productID;
 	}
 
 

@@ -21,12 +21,12 @@ public class Demo {
 	public static void main(String[] args) {
 		Technomarket t=Technomarket.getInstance();
 			
-		Product p=t.getProduct(Category.TV_AUDIO, Kind.TELEVISION);
-		
-		System.out.println(p.getModel());
-		System.out.println(p.getPrice());
-		System.out.println(p.getColor());
-		System.out.println(p.getBrand());
+//		Product p=t.getProduct(Category.TV_AUDIO, Kind.TELEVISION);
+//		
+//		System.out.println(p.getModel());
+//		System.out.println(p.getPrice());
+//		System.out.println(p.getColor());
+//		System.out.println(p.getBrand());
 		
 		Scanner sc = new Scanner(System.in);
 		ArrayList<Product> shopingCart = new ArrayList();
@@ -172,6 +172,7 @@ public class Demo {
 								while (flag4) {
 									
 									currentList.forEach(product -> System.out.println(product));
+									System.out.println();
 									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
 									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
@@ -226,6 +227,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input6)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 6:
@@ -263,6 +265,7 @@ public class Demo {
 										}
 										else {
 											shopingCart.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 9:
@@ -310,6 +313,7 @@ public class Demo {
 								while (flag5) {
 									
 									currentList.forEach(product -> System.out.println(product));
+									System.out.println();
 									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
 									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
@@ -352,6 +356,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input10)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 5:
@@ -364,6 +369,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input11)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 6:
@@ -401,6 +407,7 @@ public class Demo {
 										}
 										else {
 											shopingCart.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 9:
@@ -448,6 +455,7 @@ public class Demo {
 								while (flag6) {
 									
 									currentList.forEach(product -> System.out.println(product));
+									System.out.println();
 									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
 									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
@@ -490,6 +498,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input15)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 5:
@@ -502,6 +511,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input16)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 6:
@@ -539,6 +549,7 @@ public class Demo {
 										}
 										else {
 											shopingCart.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 9:
@@ -612,6 +623,7 @@ public class Demo {
 								while (flag8) {
 									
 									currentList.forEach(product -> System.out.println(product));
+									System.out.println();
 									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
 									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
@@ -654,6 +666,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input21)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 5:
@@ -666,6 +679,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input22)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 6:
@@ -703,6 +717,7 @@ public class Demo {
 										}
 										else {
 											shopingCart.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 9:
@@ -750,6 +765,7 @@ public class Demo {
 								while (flag9) {
 									
 									currentList.forEach(product -> System.out.println(product));
+									System.out.println();
 									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
 									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
@@ -792,6 +808,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input26)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 5:
@@ -804,6 +821,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input27)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 6:
@@ -841,6 +859,7 @@ public class Demo {
 										}
 										else {
 											shopingCart.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 9:
@@ -888,6 +907,7 @@ public class Demo {
 								while (flag10) {
 									
 									currentList.forEach(product -> System.out.println(product));
+									System.out.println();
 									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
 									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
@@ -930,6 +950,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input31)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 5:
@@ -942,6 +963,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input32)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 6:
@@ -979,6 +1001,7 @@ public class Demo {
 										}
 										else {
 											shopingCart.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 9:
@@ -1053,6 +1076,7 @@ public class Demo {
 								while (flag12) {
 									
 									currentList.forEach(product -> System.out.println(product));
+									System.out.println();
 									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
 									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
@@ -1095,6 +1119,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input37)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 5:
@@ -1107,6 +1132,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input38)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 6:
@@ -1144,6 +1170,7 @@ public class Demo {
 										}
 										else {
 											shopingCart.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 9:
@@ -1191,6 +1218,7 @@ public class Demo {
 								while (flag13) {
 									
 									currentList.forEach(product -> System.out.println(product));
+									System.out.println();
 									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
 									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
@@ -1233,6 +1261,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input42)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 5:
@@ -1245,6 +1274,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input43)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 6:
@@ -1282,6 +1312,7 @@ public class Demo {
 										}
 										else {
 											shopingCart.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 9:
@@ -1329,6 +1360,7 @@ public class Demo {
 								while (flag14) {
 									
 									currentList.forEach(product -> System.out.println(product));
+									System.out.println();
 									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
 									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
@@ -1371,6 +1403,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input47)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 5:
@@ -1383,6 +1416,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input48)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 6:
@@ -1420,6 +1454,7 @@ public class Demo {
 										}
 										else {
 											shopingCart.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 9:
@@ -1496,6 +1531,7 @@ public class Demo {
 								while (flag16) {
 									
 									currentList.forEach(product -> System.out.println(product));
+									System.out.println();
 									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
 									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
@@ -1538,6 +1574,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input53)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 5:
@@ -1550,6 +1587,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input54)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 6:
@@ -1587,6 +1625,7 @@ public class Demo {
 										}
 										else {
 											shopingCart.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 9:
@@ -1634,6 +1673,7 @@ public class Demo {
 								while (flag17) {
 									
 									currentList.forEach(product -> System.out.println(product));
+									System.out.println();
 									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
 									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
@@ -1676,6 +1716,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input58)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 5:
@@ -1688,6 +1729,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input59)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 6:
@@ -1725,6 +1767,7 @@ public class Demo {
 										}
 										else {
 											shopingCart.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 9:
@@ -1772,6 +1815,7 @@ public class Demo {
 								while (flag18) {
 									
 									currentList.forEach(product -> System.out.println(product));
+									System.out.println();
 									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
 									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
@@ -1814,6 +1858,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input63)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 5:
@@ -1826,6 +1871,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input64)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 6:
@@ -1863,6 +1909,7 @@ public class Demo {
 										}
 										else {
 											shopingCart.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 9:
@@ -1914,6 +1961,7 @@ public class Demo {
 								while (flag19) {
 									
 									currentList.forEach(product -> System.out.println(product));
+									System.out.println();
 									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
 									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
@@ -1956,6 +2004,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input68)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 5:
@@ -1968,6 +2017,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input69)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 6:
@@ -2005,6 +2055,7 @@ public class Demo {
 										}
 										else {
 											shopingCart.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 9:
@@ -2052,6 +2103,7 @@ public class Demo {
 								while (flag20) {
 								
 									currentList.forEach(product -> System.out.println(product));
+									System.out.println();
 									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
 									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
@@ -2094,6 +2146,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input73)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 5:
@@ -2106,6 +2159,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input74)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 6:
@@ -2143,6 +2197,7 @@ public class Demo {
 										}
 										else {
 											shopingCart.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 9:
@@ -2211,6 +2266,7 @@ public class Demo {
 								while (flag22) {
 									
 									currentList.forEach(product -> System.out.println(product));
+									System.out.println();
 									System.out.println("Natisnete 1 za sortirane po cena vuv vuzhodqsht red");
 									System.out.println("Natisnete 2 za sortirane po cena v nizhodqsht red");
 									System.out.println("Natisnete 3 za sortirane po azbuchen red na modela");
@@ -2253,6 +2309,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input79)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 5:
@@ -2265,6 +2322,7 @@ public class Demo {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input80)
 													.collect(Collectors.toCollection(LinkedList::new));
 											currentList.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 6:
@@ -2302,6 +2360,7 @@ public class Demo {
 										}
 										else {
 											shopingCart.forEach(product -> System.out.println(product));
+											System.out.println();
 										}
 										break;
 									case 9:

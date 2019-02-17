@@ -37,6 +37,13 @@ import products.Product;
 import users.User;
 
 public class Technomarket {
+	
+	private static final int MIN_PRICE=179;
+	private static final int MAX_PRICE=9999;
+	private static final int MIN_MODEL_NUM=100;
+	private static final int MAX_MODEL_NUM=1000;
+	private static final int MAX_PRODUCT_COUNT=100;
+	
 	private Map<Category, Map<Kind,Map<Product,Integer>>> products;
 	private Map<String,User> users;
 	private ArrayBlockingQueue<Delivery> deliveries;
@@ -45,12 +52,12 @@ public class Technomarket {
 	
 	private void initProducts(Category category,Kind kind)
 	{
-		int rnd = new Random().nextInt(10)+1;		
+		int rnd = new Random().nextInt(MAX_PRODUCT_COUNT)+1;		
 		
 		for(int i =0; i < rnd; i++)
 		{		
 			Product p = getProduct(category,kind);
-			products.get(category).get(kind).put(p, new Random().nextInt(10)+1);		
+			products.get(category).get(kind).put(p, new Random().nextInt(MAX_PRODUCT_COUNT));		
 		}	
 	}
 	
@@ -154,8 +161,8 @@ public class Technomarket {
 	public static Product getRandomTvAndAudio(Kind kind) {
 		
 		IBrand brand;
-		String model=kind+" "+(new Random().nextInt(900)+100)+" ";
-		double price=DoubleRounder.round(179+9820*new Random().nextDouble(),2);
+		String model=kind+" "+(new Random().nextInt(MAX_MODEL_NUM-MIN_MODEL_NUM)+MIN_MODEL_NUM)+" ";
+		double price=DoubleRounder.round(MIN_PRICE+(MAX_PRICE-MIN_PRICE)*new Random().nextDouble(),2);
 		
 		if(kind.equals(Kind.TELEVISION)) {
 			
@@ -179,8 +186,8 @@ public class Technomarket {
 	public static Product getRandomCpAndPeripherals(Kind kind) {
 		
 		IBrand brand;
-		String model=kind+" "+(new Random().nextInt(900)+100)+" ";
-		double price=200+2000*new Random().nextDouble();
+		String model=kind+" "+(new Random().nextInt(MAX_MODEL_NUM-MIN_MODEL_NUM)+MIN_MODEL_NUM)+" ";
+		double price=DoubleRounder.round(MIN_PRICE+(MAX_PRICE-MIN_PRICE)*new Random().nextDouble(),2);
 		
 		if(kind.equals(Kind.LAPTOP)) {
 			
@@ -205,8 +212,8 @@ public class Technomarket {
 	public static Product getRandomPhonesAndTablets(Kind kind) {		
 
 		IBrand brand;
-		String model=kind+" "+(new Random().nextInt(900)+100)+" ";
-		double price=200+2000*new Random().nextDouble();
+		String model=kind+" "+(new Random().nextInt(MAX_MODEL_NUM-MIN_MODEL_NUM)+MIN_MODEL_NUM)+" ";
+		double price=DoubleRounder.round(MIN_PRICE+(MAX_PRICE-MIN_PRICE)*new Random().nextDouble(),2);
 		
 		if(kind.equals(Kind.PHONE)) {	
 			brand=PhoneBrand.values()[new Random().nextInt(PhoneBrand.values().length)];
@@ -229,8 +236,8 @@ public class Technomarket {
 	public static Product getRandomElectricalAppliance(Kind kind) {
 		
 		IBrand brand;
-		String model=kind+" "+(new Random().nextInt(900)+100)+" ";
-		double price=200+2000*new Random().nextDouble();
+		String model=kind+" "+(new Random().nextInt(MAX_MODEL_NUM-MIN_MODEL_NUM)+MIN_MODEL_NUM)+" ";
+		double price=DoubleRounder.round(MIN_PRICE+(MAX_PRICE-MIN_PRICE)*new Random().nextDouble(),2);
 		
 		if(kind.equals(Kind.AIRCONDITIONER)) {
 			
@@ -265,8 +272,8 @@ public class Technomarket {
 	public static Product getRandomPhotoAndVideo(Kind kind) {
 		
 		CameraBrand brand=CameraBrand.values()[new Random().nextInt(CameraBrand.values().length)];;
-		String model=kind+" "+(new Random().nextInt(900)+100)+" ";
-		double price=200+2000*new Random().nextDouble();
+		String model=kind+" "+(new Random().nextInt(MAX_MODEL_NUM-MIN_MODEL_NUM)+MIN_MODEL_NUM)+" ";
+		double price=DoubleRounder.round(MIN_PRICE+(MAX_PRICE-MIN_PRICE)*new Random().nextDouble(),2);
 		
 		return new Product.Camera(model, price,Product.getRandomColor(),brand);
 	}
@@ -373,8 +380,6 @@ public class Technomarket {
 
 	public void addRequest(Request request) throws InterruptedException {
 		this.requests.put(request);
-	}
-	
-	
+	}	
 	
 }
