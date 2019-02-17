@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.stream.Collectors;
 
 import org.decimal4j.util.DoubleRounder;
@@ -38,11 +39,16 @@ import users.User;
 public class Technomarket {
 	private Map<Category, Map<Kind,Map<Product,Integer>>> products;
 	private Map<String,User> users;
+	private ArrayBlockingQueue<Delivery> deliveries;
+	private ArrayBlockingQueue<Request> requests;;
 	private static Technomarket technomarket=null;
+	
 	
 	private Technomarket() {
 		this.products=new HashMap();
 		this.users=new HashMap<String,User>();
+		this.deliveries = new ArrayBlockingQueue<Delivery>(100);
+		this.requests = new ArrayBlockingQueue<Request>(100);
 	}
 	
 	public static Technomarket getInstance() {
@@ -265,4 +271,33 @@ public class Technomarket {
 		}
 		return product;
 	}
+
+	public boolean hasProductInStock(Category category, Kind kind, int input7) {
+		HashSet<Product> tempSet = new HashSet<Product>();
+		tempSet = (HashSet<Product>) this.products.get(category).get(kind).keySet();
+		boolean contains = false;
+		Product product = null;
+		for (Product p : tempSet) {
+			if (p.getProductID() == input7) {
+				product = p;
+				break;
+			}
+		}
+		if (this.products.get(category).get(kind).get(product) > 0) {
+			contains = true;
+		}
+		return contains;
+	}
+
+	public void addDelivery(Delivery delivery) throws InterruptedException {
+		this.deliveries.put(delivery);
+		
+	}
+
+	public void addRequest(Request request) throws InterruptedException {
+		this.requests.put(request);
+	}
+	
+	
+	
 }
