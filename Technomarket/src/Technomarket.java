@@ -135,7 +135,8 @@ public class Technomarket {
 		this.deliveries = new ArrayBlockingQueue<Delivery>(100);
 		this.requests = new ArrayBlockingQueue<Request>(100);
 		DBManager.getInstance().deleteProducts();
-		init();			
+		init();	
+		
 	}
 	
 	public static Technomarket getInstance() {
@@ -384,6 +385,22 @@ public class Technomarket {
 
 	public void addRequest(Request request) throws InterruptedException {
 		this.requests.put(request);
+	}
+
+	public Request getNextRequest() throws InterruptedException {
+		
+		return this.requests.take();
+	}
+
+	public void addProduct(Product p) {
+		this.products.get(p.getCategory()).get(p.getKind())
+		.put(p, this.products.get(p.getCategory()).get(p.getKind()).get(p) + 1);
+		
+	}
+
+	public Delivery getNextDelivery() throws InterruptedException {
+		
+		return this.deliveries.take();
 	}	
 	
 }

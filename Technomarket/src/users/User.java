@@ -1,13 +1,14 @@
 package users;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class User {
 	
 	private static final int MIN_LENGTH_PASS = 6;
-	private static final int MIN_LENGTH_LASTNAME = 6;
-	private static final int MIN_LENGTH_FIRSTNAME = 4;
+	private static final int MIN_LENGTH_LASTNAME = 2;
+	private static final int MIN_LENGTH_FIRSTNAME = 2;
 	
 	private static int lastUserID = 1;
 
@@ -20,6 +21,7 @@ public class User {
 	private boolean isLogged;
 	private boolean isAdmin;
 	private int userID;
+	private ArrayList<String> messages;
 	
 	public User(String firstName, String lastName, String email, String password, Gender gender, LocalDate birthDate) {
 		setFirstName(firstName);
@@ -31,6 +33,7 @@ public class User {
 		setLogged(false);
 		setAdmin(false);
 		this.userID=User.lastUserID++;
+		this.messages = new ArrayList<String>();
 	}
 	
 	@Override
@@ -44,6 +47,10 @@ public class User {
 	@Override
 	public int hashCode() {
 		return this.email.hashCode();
+	}
+	
+	public void addMessage(String message) {
+		this.messages.add(message);
 	}
 	
 	public String getFirstName() {
@@ -72,8 +79,8 @@ public class User {
 		Matcher m = p.matcher(email);
 		if(m.matches())
 			this.email = email;
-		else 
-			System.out.println("Invalid email address!");
+		//else 
+			//System.out.println("Invalid email address!");
 	}
 	public String getPassword() {
 		return password;
@@ -81,8 +88,8 @@ public class User {
 	public void setPassword(String password) {
 		if(password!=null && password.trim().length()>=MIN_LENGTH_PASS)
 			this.password = password;
-		else
-			System.out.println("Invalid password!");
+		//else
+			//System.out.println("Invalid password!");
 	}
 	public Gender getGender() {
 		return gender;

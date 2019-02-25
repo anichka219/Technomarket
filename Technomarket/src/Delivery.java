@@ -13,5 +13,13 @@ public class Delivery {
 		this.productsForDelivery = shopingCart;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public ArrayList<Product> getProductsForDelivery() {
+		return productsForDelivery;
+	}
+
 	
 }

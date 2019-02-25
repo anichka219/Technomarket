@@ -11,4 +11,14 @@ public class Request {
 		this.product = product;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	
+	
 }

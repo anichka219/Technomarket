@@ -39,6 +39,7 @@ public class Demo {
 			System.out.println("Natisnete 2 za razglejdane na produkti");
 			System.out.println("Natisnete 0 za izhod ot saita");
 			int input1 = sc.nextInt();
+		
 			
 			switch(input1) {
 			
@@ -214,7 +215,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input5)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 										}
 										break;
 									case 5:
@@ -226,7 +227,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input6)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -256,6 +257,7 @@ public class Demo {
 											}
 											else {
 												shopingCart.add(t.getProduct(category, kind, input7));
+												System.out.println("Dobavihte produkt v kolichkata!");
 											}
 										}
 										break;
@@ -355,7 +357,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input10)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -368,7 +370,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input11)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -398,6 +400,7 @@ public class Demo {
 											}
 											else {
 												shopingCart.add(t.getProduct(category, kind, input12));
+												System.out.println("Dobavihte produkt v kolichkata!");
 											}
 										}
 										break;
@@ -497,7 +500,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input15)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -510,7 +513,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input16)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -540,6 +543,7 @@ public class Demo {
 											}
 											else {
 												shopingCart.add(t.getProduct(category, kind, input17));
+												System.out.println("Dobavihte produkt v kolichkata!");
 											}
 										}
 										break;
@@ -665,7 +669,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input21)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -678,7 +682,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input22)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -708,6 +712,7 @@ public class Demo {
 											}
 											else {
 												shopingCart.add(t.getProduct(category, kind, input23));
+												System.out.println("Dobavihte produkt v kolichkata!");
 											}
 										}
 										break;
@@ -807,7 +812,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input26)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -820,7 +825,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input27)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -850,6 +855,7 @@ public class Demo {
 											}
 											else {
 												shopingCart.add(t.getProduct(category, kind, input28));
+												System.out.println("Dobavihte produkt v kolichkata!");
 											}
 										}
 										break;
@@ -949,7 +955,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input31)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -962,7 +968,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input32)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -992,6 +998,7 @@ public class Demo {
 											}
 											else {
 												shopingCart.add(t.getProduct(category, kind, input33));
+												System.out.println("Dobavihte produkt v kolichkata!");
 											}
 										}
 										break;
@@ -1118,7 +1125,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input37)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -1131,7 +1138,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input38)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -1161,6 +1168,7 @@ public class Demo {
 											}
 											else {
 												shopingCart.add(t.getProduct(category, kind, input39));
+												System.out.println("Dobavihte produkt v kolichkata!");
 											}
 										}
 										break;
@@ -1260,7 +1268,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input42)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -1273,7 +1281,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input43)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -1303,6 +1311,7 @@ public class Demo {
 											}
 											else {
 												shopingCart.add(t.getProduct(category, kind, input44));
+												System.out.println("Dobavihte produkt v kolichkata!");
 											}
 										}
 										break;
@@ -1402,7 +1411,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input47)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -1415,7 +1424,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input48)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -1445,6 +1454,7 @@ public class Demo {
 											}
 											else {
 												shopingCart.add(t.getProduct(category, kind, input49));
+												System.out.println("Dobavihte produkt v kolichkata!");
 											}
 										}
 										break;
@@ -1573,7 +1583,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input53)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -1586,7 +1596,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input54)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -1616,6 +1626,7 @@ public class Demo {
 											}
 											else {
 												shopingCart.add(t.getProduct(category, kind, input55));
+												System.out.println("Dobavihte produkt v kolichkata!");
 											}
 										}
 										break;
@@ -1715,7 +1726,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input58)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -1728,7 +1739,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input59)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+										
 											System.out.println();
 										}
 										break;
@@ -1758,6 +1769,7 @@ public class Demo {
 											}
 											else {
 												shopingCart.add(t.getProduct(category, kind, input60));
+												System.out.println("Dobavihte produkt v kolichkata!");
 											}
 										}
 										break;
@@ -1857,7 +1869,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input63)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -1870,7 +1882,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input64)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -1900,6 +1912,7 @@ public class Demo {
 											}
 											else {
 												shopingCart.add(t.getProduct(category, kind, input65));
+												System.out.println("Dobavihte produkt v kolichkata!");
 											}
 										}
 										break;
@@ -2003,7 +2016,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input68)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -2016,7 +2029,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input69)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -2046,6 +2059,7 @@ public class Demo {
 											}
 											else {
 												shopingCart.add(t.getProduct(category, kind, input70));
+												System.out.println("Dobavihte produkt v kolichkata!");
 											}
 										}
 										break;
@@ -2145,7 +2159,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input73)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -2158,7 +2172,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input74)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+											
 											System.out.println();
 										}
 										break;
@@ -2188,6 +2202,7 @@ public class Demo {
 											}
 											else {
 												shopingCart.add(t.getProduct(category, kind, input75));
+												System.out.println("Dobavihte produkt v kolichkata!");
 											}
 										}
 										break;
@@ -2308,7 +2323,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() < input79)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+										
 											System.out.println();
 										}
 										break;
@@ -2321,7 +2336,7 @@ public class Demo {
 										else {
 											currentList = currentList.stream().filter(product -> product.getPrice() > input80)
 													.collect(Collectors.toCollection(LinkedList::new));
-											currentList.forEach(product -> System.out.println(product));
+										
 											System.out.println();
 										}
 										break;
@@ -2351,6 +2366,7 @@ public class Demo {
 											}
 											else {
 												shopingCart.add(t.getProduct(category, kind, input81));
+												System.out.println("Dobavihte produkt v kolichkata!");
 											}
 										}
 										break;
